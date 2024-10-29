@@ -23,7 +23,7 @@ const Home = () => {
     }
   return (
     <div className="container">
-     <h1>HOME</h1>
+     <h1>Travel Blog</h1>
      {state.users.map(user => (<div key={user.email}>{user.email}</div>))}
     </div>
   );
