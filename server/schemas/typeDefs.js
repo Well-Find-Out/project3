@@ -29,7 +29,6 @@ const typeDefs = `
   type Query {
     user: User
     users: [User]
-    user(userId: ID!): User   
     trip(tripId: ID!): Trip
     trips: [Trip]
     pictures: [Trip]    
