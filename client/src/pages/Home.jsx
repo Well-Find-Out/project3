@@ -31,11 +31,11 @@ const Home = () => {
     <div className="container">
      <h1>WRLD TRAVELLERS</h1>
      {publicTrips.map(trip => (
-                <div key={trip.id} className="trip-card">
+                <div key={trip._id} className="trip-card">
                     <h2>{trip.name}</h2>
                     <p><strong>Destination:</strong> {trip.destination}</p>
                     <p><strong>Date:</strong> {trip.date}</p>
-                    <p><strong>Author:</strong> {trip.userId}</p>
+                    <p><strong>Author:</strong> {trip.userId.firstName}{trip.userId.lastName} </p>
                     <p>{trip.preview}...</p>
                 </div>
             ))}
