@@ -5,22 +5,11 @@ const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id);
-        // const user = await User.findById(context.user._id).populate({
-        //   path: 'orders.products',
-        //   populate: 'category',
-        // });
-        
-        // user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
+        const user = await User.findById(context.user._id);        
         return user;
       }
-
       throw AuthenticationError;
     },
-    // user: async (parent, { userId }) => {
-    //   return User.findOne({ _id: userId });
-    // },
     users: async (parent, args) => {
         return User.find({}).select('-__v');
     },
@@ -35,11 +24,17 @@ const resolvers = {
     },
   },
   Mutation: {
-    addTrip: async (parent, args) => {
-      const trip = await Trip.create(args);
-
-      return { trip };
+    addTrip: async (parent, args, context) => {
+      if (context.user) {    
+        const user = await User.findById(context.user._id);
+        const trip = await Trip.create({ ...args.trip, user: context.user._id });
+        user.trips.push(trip);
+        user.save();
+        return trip.populate("user");
+      }
+      throw AuthenticationError;     
     },
+    
     addPictures: async (parent, { tripId, pictures }) => {
       return Trip.findOneAndUpdate({ _id: tripId },
         {

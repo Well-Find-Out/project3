@@ -15,7 +15,14 @@ const typeDefs = `
     public: Boolean
     createdAt: String
     pictures: [Picture]
-    userId: User
+    user: User
+  }
+
+  input TripData {
+    name: String
+    destination: String
+    details: String
+    public: Boolean    
   }
 
   type Picture {
@@ -42,7 +49,8 @@ const typeDefs = `
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
     # addTrip(name: String!, destination: String!, details: String, public: Boolean, userId: User): Trip
-    addTrip(name: String!, destination: String!, details: String, public: Boolean): Trip
+    # addTrip(name: String!, destination: String!, details: String, public: Boolean!): Trip
+    addTrip(trip: TripData!): Trip
     addPictures(tripId: ID!, fileName: String): Trip
     updateTrip(tripId: ID!, name: String!, destination: String!, details: String): Trip
     deleteTrip(tripId: ID!): Trip
