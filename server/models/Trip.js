@@ -21,23 +21,30 @@ const tripSchema = new Schema({
     maxlength: 500,
     trim: true
   },  
+  public: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
   createdAt: {
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp)
-  },
+  },  
   pictures: [
     {
-        fileName: {
+      url: {
         type: String
       },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
+      description: {
+        type: String
       },
     }
-  ]
+  ],
+  userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
 });
 
 const Trip = mongoose.model('Trip', tripSchema);

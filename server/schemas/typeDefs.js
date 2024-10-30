@@ -12,13 +12,15 @@ const typeDefs = `
     name: String
     destination: String
     details: String
+    public: Boolean
     createdAt: String
-    pictures: [Pictures]
+    pictures: [Picture]
+    userId: User
   }
 
-  type Pictures {
-    _id: ID
-    fileName: String
+  type Picture {
+    url: String
+    description: String
   }
 
   type Auth {
@@ -27,7 +29,8 @@ const typeDefs = `
   }
 
   type Query {
-    user: User
+    user(userId: ID!): User
+    # user: User
     users: [User]
     trip(tripId: ID!): Trip
     trips: [Trip]
@@ -38,9 +41,10 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    addTrip(name: String!, destination: String!, details: String): Trip
+    # addTrip(name: String!, destination: String!, details: String, public: Boolean, userId: User): Trip
+    addTrip(name: String!, destination: String!, details: String, public: Boolean): Trip
     addPictures(tripId: ID!, fileName: String): Trip
-    # updateTrip(tripId: ID!, name: String!, destination: String!, details: String): Trip
+    updateTrip(tripId: ID!, name: String!, destination: String!, details: String): Trip
     deleteTrip(tripId: ID!): Trip
   }
 `;
