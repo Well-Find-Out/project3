@@ -30,6 +30,11 @@ const typeDefs = `
     description: String
   }
 
+  input TripPicture {
+    url: String
+    description: String   
+  }
+
   type Auth {
     token: ID
     user: User
@@ -48,10 +53,8 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    # addTrip(name: String!, destination: String!, details: String, public: Boolean, userId: User): Trip
-    # addTrip(name: String!, destination: String!, details: String, public: Boolean!): Trip
     addTrip(trip: TripData!): Trip
-    addPictures(tripId: ID!, fileName: String): Trip
+    addPicture(tripId: ID!, trip: TripPicture!): Trip
     updateTrip(tripId: ID!, name: String!, destination: String!, details: String): Trip
     deleteTrip(tripId: ID!): Trip
   }

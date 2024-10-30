@@ -35,12 +35,15 @@ const resolvers = {
       throw AuthenticationError;     
     },
     
-    addPictures: async (parent, { tripId, pictures }) => {
-      return Trip.findOneAndUpdate({ _id: tripId },
-        {
-          $addToSet: { pictures },
-        },
-      );
+    addPicture: async (parent, args, context) => {  
+      if (context.user) { 
+        const tripId = args.tripId;
+        return Trip.findByIdAndUpdate(
+          { _id: tripId },
+          { $push: { pictures: args.trip } },     
+          ).select('-__v');
+          }
+      throw AuthenticationError; 
     },
 
 
