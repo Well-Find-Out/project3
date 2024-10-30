@@ -19,4 +19,25 @@ export const QUERY_USERS = gql`
     }
 }
 `;
-
+export const QUERY_TRIPS = gql`
+  {
+    trips {
+      _id
+      name
+      destination
+      date
+      details
+      public
+      userId {
+        _id
+        firstName
+        lastName
+      }
+      pictures {
+        url
+        description
+      }
+      createdAt
+    }
+  }
+`;
