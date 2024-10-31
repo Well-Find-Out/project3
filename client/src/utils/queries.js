@@ -1,5 +1,18 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_TRIPS = gql`
+  {
+    trips {
+      _id
+      name
+      destination
+      createdAt
+      details
+      public
+    }
+  }
+`;
+
 export const QUERY_USER = gql`
   {
     user {
@@ -18,26 +31,4 @@ export const QUERY_USERS = gql`
         email
     }
 }
-`;
-export const QUERY_TRIPS = gql`
-  {
-    trips {
-      _id
-      name
-      destination
-      date
-      details
-      public
-      userId {
-        _id
-        firstName
-        lastName
-      }
-      pictures {
-        url
-        description
-      }
-      createdAt
-    }
-  }
 `;

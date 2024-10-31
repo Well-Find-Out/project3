@@ -28,7 +28,7 @@ const resolvers = {
       return Trip.findOne({ _id: tripId });
     },
     trips: async (parent, args) => {
-        return Trip.find({}).select('-__v');
+      return Trip.find({}).select('-__v');
     },
     pictures: async (parent, args) => {
         return Trip.find({}).populate({ path: 'pictures', select: '-__v' });

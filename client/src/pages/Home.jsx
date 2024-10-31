@@ -3,44 +3,49 @@ import { QUERY_TRIPS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { SET_TRIPS } from "../utils/actions";
+import '../App.css';
 
 const Home = () => {
 
-    
     const [state, dispatch] = useGlobalContext();
-    const {data, loading} = useQuery(QUERY_TRIPS);
+    const {data, loading, error} = useQuery(QUERY_TRIPS);
     
-    
+    console.log('Data:', data);
     const trips = data?.trips || []
-    console.log(trips);
+
+    console.log('Here is the trip data:', trips);
 
     useEffect(() => {
-        dispatch({type: SET_TRIPS, payload: trips})
-    }, [data, dispatch])
+      if (data ) {
+          dispatch({ type: SET_TRIPS, payload: data.trips }); 
+      }
+  }, [data, dispatch]);
 
     if (loading) {
         return <h3>Loading...</h3>
     }
-    const publicTrips = trips
-          .filter(trip => trip.public)
-          .map(trip => ({
-              ...trip,
-              preview: trip.details.split(" ").slice(0, 50).join(" ") 
-          }));
-  return (
-    <div className="container">
-     <h1>WRLD TRAVELLERS</h1>
-     {publicTrips.map(trip => (
-                <div key={trip._id} className="trip-card">
-                    <h2>{trip.name}</h2>
-                    <p><strong>Destination:</strong> {trip.destination}</p>
-                    <p><strong>Date:</strong> {trip.date}</p>
-                    <p><strong>Author:</strong> {trip.userId.firstName}{trip.userId.lastName} </p>
-                    <p>{trip.preview}...</p>
-                </div>
-            ))}
-        </div>
-    );
+    if (error) {
+        console.error('Error fetching trips:', error);
+        return <h3>Error: {error.message}</h3>;
+    }
+    const publicTrips = state.trips.filter(trip => trip.public);
+          
+    return (
+      <div className="home-container">
+          <h1 className="title">WRLD TRAVELLERS</h1>
+          <div className="trips-container">
+              {publicTrips.map(trip => (
+                  <div key={trip._id} className="trip-card">
+                      <h2 className="trip-title">{trip.name}</h2>
+                      <p><strong>Destination:</strong> {trip.destination}</p>
+                      <p><strong>Date:</strong> {trip.createdAt}</p>
+                      <p className="trip-details">{trip.details.slice(0, 100)}...</p>
+                  </div>
+              ))}
+          </div>
+      </div>
+  );
 };
+
 
 export default Home;

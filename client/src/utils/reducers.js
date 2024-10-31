@@ -1,5 +1,9 @@
 import {
-  SET_USERS
+  SET_USERS 
+} from "./actions";
+
+import {
+  SET_TRIPS 
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -7,7 +11,12 @@ export const reducer = (state, action) => {
     case SET_USERS:
         return {
             ...state,
-            users: action.payload
+            users: action.payload,
+        }
+        case SET_TRIPS:
+        return {
+            ...state,
+            trips: action.payload,
         }
     default:
       return state;
