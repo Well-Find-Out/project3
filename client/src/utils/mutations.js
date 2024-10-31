@@ -37,6 +37,16 @@ export const ADD_TRIP = gql`
   mutation addTrip(
     $name: String!
     $destination: String!
-    $details: String!    
+    $details: String!   
+    $public: Boolean!
+    $user: User!
+  )
+`;
+
+export const ADD_PICTURE = gql`
+  mutation addPicture(
+    $url: String
+    $description: String
+    $trip: Trip!
   )
 `;
