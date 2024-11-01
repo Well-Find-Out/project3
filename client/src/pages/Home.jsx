@@ -1,9 +1,10 @@
 import { useGlobalContext } from "../utils/GlobalState";
+import Map from '../components/Map/';
 import { QUERY_TRIPS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useEffect } from "react";
 import { SET_TRIPS } from "../utils/actions";
-import '../App.css';
+import './Home.css';
 
 const Home = () => {
 
@@ -29,10 +30,22 @@ const Home = () => {
         return <h3>Error: {error.message}</h3>;
     }
     const publicTrips = state.trips.filter(trip => trip.public);
+    const destinations = publicTrips.map(trip => trip.destination);
           
     return (
       <div className="home-container">
-          <h1 className="title">WRLD TRAVELLERS</h1>
+          <div className="header-section">
+              <h1 className="website-title">WRLD TRAVELLERS</h1>
+            <span className="subtitle">A PLACE TO KEEP YOUR MEMORIES.</span><br /> 
+          </div>
+
+          <div className="map-section">
+                <h2 className="map-title">Discover unforgettable travel experiences from around the world.</h2>
+                <Map locations={destinations} /> 
+            </div>
+
+
+          
           <div className="trips-container">
               {publicTrips.map(trip => (
                   <div key={trip._id} className="trip-card">

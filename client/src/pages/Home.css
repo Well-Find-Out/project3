@@ -1,0 +1,96 @@
+
+
+.home-container {
+    padding: 20px;
+    text-align: center;
+    background-color: #CD8987;
+}
+
+
+.header-section {
+    position: relative;
+    padding: 120px 20px;
+    background-image: url('https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); 
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.website-title {
+    font-size: 5rem;
+    color: #ffffff;
+    margin: 0;
+    font-weight: bold;
+    text-shadow: 10px 2px 8px rgba(1, 1, 1, 0.5);
+}
+
+.subtitle {
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 20px;
+    max-width: 700px;
+    line-height: 2;
+    text-shadow: 10px 2px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 300;
+    margin: 0 auto;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+}
+
+
+
+.trips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.trip-card {
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.trip-title {
+    font-size: 1.5rem;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.trip-details {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+
+
+.map-section {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.map-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}

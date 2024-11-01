@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: #CD8987;
+
 }
 
 .logo {
@@ -34,56 +34,3 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-.home-container {
-    padding: 20px;
-    text-align: center;
-}
-
-.title {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-.trips-container {
-    display: flex;
-    background-color: #69A197;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.trip-card {
-    background-color: #fff;
-    border: 1px solid #e1e1e1;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    padding: 20px;
-    text-align: left;
-    transition: transform 0.3s ease;
-}
-
-.trip-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-}
-
-.trip-title {
-    font-size: 1.5rem;
-    color: #3498db;
-    margin-bottom: 10px;
-}
-
-.trip-details {
-    color: #7f8c8d;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
