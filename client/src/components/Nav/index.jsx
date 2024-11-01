@@ -17,7 +17,11 @@ function Nav() {
       );
     } else {
       return (
+        
         <ul className="flex-row">
+          <li className="mx-1">
+                <Link to="/about">About</Link>
+            </li>
           <li className="mx-1">
             <Link to="/signup">
               Signup
@@ -40,12 +44,6 @@ function Nav() {
         WRLD TRAVELLERS
         </Link>
       </h1>
-        <ul>
-            <li>
-                <Link to="/about">About</Link>
-            </li>
-        </ul>
-       
       <nav>
         {showNavigation()}
       </nav>

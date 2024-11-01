@@ -147,6 +147,7 @@ input:focus {
 .flex-row {
   display: flex;
   flex-wrap: wrap;
+ 
 }
 
 .space-between {
@@ -160,6 +161,10 @@ input:focus {
 .mx-1 {
   margin-right: var(--spacing-one);
   margin-left: var(--spacing-one);
+  padding: 20px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .mx-2 {
