@@ -31,7 +31,7 @@ const Map = ({ locations }) => {
     const [markers, setMarkers] = useState([]);
 
     const center = {
-        lat: 40.7128, // Default center point
+        lat: 40.7128, 
         lng: -74.0060,
     };
 
@@ -41,11 +41,9 @@ const Map = ({ locations }) => {
                 const updatedMarkers = await Promise.all(
                     locations.map(async (destination) => {
                         const coords = await getCoordinates(destination);
-                        return coords; // Returns { lat, lng } or null
+                        return coords; 
                     })
                 );
-
-                // Filter out any null values
                 setMarkers(updatedMarkers.filter(marker => marker !== null));
             }
         };
