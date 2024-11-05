@@ -18,13 +18,20 @@ const tripSchema = new Schema({
     type: String,
     required: true,
     minlength: 1,
-    maxlength: 500,
+    maxlength: 5000,
     trim: true
   },  
   isPublic: {
     type: Boolean,
     required: true,
-    default: false
+  },
+  thumbnail: {
+    type: String,
+  },
+  category: {
+    type: String,
+    required: true,
+    default: null
   },
   createdAt: {
     type: Date,

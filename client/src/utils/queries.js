@@ -21,17 +21,49 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_TRIPS = gql`
-  {
-    trips {
+query trips {
+  trips {
+    _id
+    name
+    destination
+    text
+    isPublic
+    thumbnail
+    category
+    createdAt
+    user {
       _id
-      name
-      destination
-      text
-      isPublic
-      createdAt
     }
+  }
 }
 `;
+
+
+export const QUERY_TRIP = gql`
+  query Trip($tripId: ID!) {
+  trip(tripId: $tripId) {
+    _id
+    name
+    destination
+    text
+    isPublic
+    createdAt
+    user {
+      _id
+    }
+  }
+}
+`;
+
+// export const QUERY_RECENT_TRIPS = gql`
+//   {
+//     trips (orderBy: { createdAt: ASC }) {
+//       _id
+//       name
+//       destination
+//     }
+// }
+// `;
 
 export const QUERY_USER_TRIPS = gql`
   {
@@ -41,6 +73,8 @@ export const QUERY_USER_TRIPS = gql`
       destination
       text
       isPublic
+      category
+      thumbnail
       createdAt
     }
 }

@@ -1,5 +1,6 @@
 import logo from "../assets/logo.png";
 import Navigation from "./Navigation";
+// import { FaBars } from "react-icons/fa";
 
 function Header() {
   return (
@@ -12,6 +13,17 @@ function Header() {
           </div>
         </a>
         <Navigation />
+        {/* <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <FaBars />
+        </button> */}
       </div>
     </nav>
   );

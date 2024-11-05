@@ -1,10 +1,8 @@
 import Select from "react-select";
-import { FaEarthAmericas } from "react-icons/fa6";
-import { useState, useEffect } from "react";
+import { FaEdit } from "react-icons/fa";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import path from "path";
-import fs from "fs";
-import { ADD_TRIP } from "../utils/mutations";
+import { UPDATE_TRIP } from "../utils/mutations";
 import { QUERY_USER_TRIPS } from "../utils/queries";
 
 const categories = [
@@ -14,22 +12,26 @@ const categories = [
   { value: "Leisure", label: "Leisure" },
 ];
 
-function AddTrip() {
-  const [name, setName] = useState("");
-  const [destination, setDestination] = useState("");
-  const [text, setText] = useState("");
-  const [isPublic, setIsPublic] = useState(false); // Public - Initial state is unchecked
-  const [category, setCategory] = useState("");
-  const [thumbnail, setThumbnail] = useState(null);
+function EditTrip({ trip }) {
+  const [tripId, setTripId] = useState(trip._id);
+  const [name, setName] = useState(trip.name);
+  const [category, setCategory] = useState(trip.category);
+  const [destination, setDestination] = useState(trip.destination);
+  const [text, setText] = useState(trip.text);
+  const [isPublic, setIsPublic] = useState(trip.isPublic);
+  const [thumbnail, setThumbnail] = useState(trip.thumbnail);
 
-  // useEffect(() => {
-  //   console.log("File has been set.");
-  // }, [thumbnail]);
-
-  const [addTrip] = useMutation(ADD_TRIP, {
+  const [updateTrip] = useMutation(UPDATE_TRIP, {
     variables: {
-      trip: { name, category, destination, text, isPublic, thumbnail },
+      tripId,
+      name,
+      category,
+      destination,
+      text,
+      isPublic,
+      thumbnail,
     },
+    // onCompleted: () => navigate('/profile'),
     refetchQueries: [{ query: QUERY_USER_TRIPS }],
   });
 
@@ -41,12 +43,6 @@ function AddTrip() {
     setCategory(category.value);
   };
 
-  // const handleFile = (thumbnail) => {
-  //   // const fileInfo = thumbnail.target.files[0];
-  //   // console.log(fileInfo);
-  //   setThumbnail(thumbnail.target.files[0]);
-  // };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -54,41 +50,31 @@ function AddTrip() {
       return alert("Please provide input for all fields");
     }
 
-    addTrip(name, category, destination, text, isPublic, thumbnail);
-
-    setName("");
-    setCategory("");
-    setDestination("");
-    setText("");
-    setIsPublic(false);
-    setThumbnail(null);
+    updateTrip(name, category, destination, text, isPublic, thumbnail);
   };
 
   return (
     <>
       <button
         type="button"
-        className="btn btn-primary mx-4 mb-3"
+        className="btn btn-success btn-sm"
         data-bs-toggle="modal"
-        data-bs-target="#addTripModal"
+        data-bs-target="#updateTripModal"
       >
-        <div className="d-flex align-items-center">
-          <FaEarthAmericas className="icon" />
-          <div>Add Trip</div>
-        </div>
+        <FaEdit />
       </button>
 
       <div
         className="modal fade"
-        id="addTripModal"
-        aria-labelledby="addTripModalLabel"
+        id="updateTripModal"
+        aria-labelledby="updateTripModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h3 className="modal-title fs-5" id="addTripModalLabel">
-                Add Trip
+              <h3 className="modal-title fs-5" id="updateTripModalLabel">
+                Edit Trip
               </h3>
               <button
                 type="button"
@@ -114,6 +100,7 @@ function AddTrip() {
                   <Select
                     name="category"
                     options={categories}
+                    value={category}
                     onChange={handleSelect}
                     searchable="true"
                   />
@@ -164,8 +151,7 @@ function AddTrip() {
                   <input
                     type="file"
                     // value={""}
-                    // onChange={(e) => setThumbnail(e.target.files[0])}
-                    onChange={handleFile}
+                    onChange={(e) => setThumbnail(e.target.files[0])}
                     accept="png, jpg"
                   />
                 </div> */}
@@ -182,7 +168,7 @@ function AddTrip() {
                     data-bs-dismiss="modal"
                     className="btn btn-primary"
                   >
-                    Add
+                    Update
                   </button>
                 </div>
               </form>
@@ -194,4 +180,4 @@ function AddTrip() {
   );
 }
 
-export default AddTrip;
+export default EditTrip;

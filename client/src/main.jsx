@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import TripDetails from "./pages/TripDetails";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,19 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
+      {
+        path: "/trips/:tripId",
+        element: <TripDetails />,
+      },
+      // {
+      //   path: "/posts",
+      //   element: <AuthorPosts />,
+      // },
+
+      // {
+      //   path: "/posts/edit/:id",
+      //   element: <EditPost />,
+      // },
     ],
   },
 ]);

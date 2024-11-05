@@ -13,21 +13,24 @@ const resolvers = {
     users: async (parent, args) => {
         return User.find({}).select('-__v');
     },
-    trip: async (parent, { tripId }) => {
-      return Trip.findOne({ _id: tripId });
+    trip: async (parent, {tripId}) => {
+      return Trip.findById({_id: tripId});
     },
     trips: async (parent, args) => {
         return Trip.find({}).select('-__v');
     },
-    pictures: async (parent, args) => {
-        return Trip.find({}).populate({ path: 'pictures', select: '-__v' });
-    },
+    // recentTrips: async (parent, args) => {
+    //     return Trip.find({isPublic: true}).select('-__v');
+    // },
+    // pictures: async (parent, args) => {
+    //     return Trip.find({}).populate({ path: 'pictures', select: '-__v' });
+    // },
   },
   Mutation: {
     addTrip: async (parent, args, context) => {
       if (context.user) {    
-        const user = await User.findById(context.user._id);
-        const trip = await Trip.create({ ...args.trip, user: context.user._id });
+        const user = await User.findById(context.user._id);              
+        const trip = await Trip.create({ ...args.trip, user: context.user._id });             
         user.trips.push(trip);
         user.save();
         return trip.populate("user");
@@ -35,9 +38,8 @@ const resolvers = {
       throw AuthenticationError;     
     },
 
-    deleteTrip: async (parent, args, context) => {
-      if (context.user) {   
-        const tripId = args.tripId;
+    deleteTrip: async (parent, {tripId}, context) => {
+      if (context.user) {          
         return await Trip.findOneAndDelete({ _id: tripId });
       }
       throw AuthenticationError;     
