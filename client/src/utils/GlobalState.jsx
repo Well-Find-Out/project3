@@ -11,6 +11,7 @@ export function useGlobalReducer(initialState) {
 const GlobalProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useGlobalReducer({
     users: [],
+    trips:[],
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
