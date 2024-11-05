@@ -30,6 +30,7 @@ const Home = () => {
         return <h3>Error: {error.message}</h3>;
     }
     const publicTrips = (state.trips || []).filter(trip => trip.isPublic);
+    console.log('Public trips after filter:', publicTrips);
     const destinations = publicTrips.map(trip => trip.destination);
           
     return (
@@ -51,7 +52,7 @@ const Home = () => {
                           <h2 className="trip-title">{trip.name}</h2>
                           <p><strong>Destination:</strong> {trip.destination}</p>
                           <p><strong>Date:</strong> {trip.createdAt}</p>
-                          <p className="trip-details">{trip.details.slice(0, 100)}...</p>
+                          <p className="trip-details">{trip.text.slice(0, 100)}...</p>
                       </div>
                   ))
               ) : (
