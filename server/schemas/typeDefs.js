@@ -13,6 +13,8 @@ const typeDefs = `
     destination: String
     text: String
     isPublic: Boolean
+    thumbnail: String
+    category: String
     createdAt: String
     pictures: [Picture]
     user: User
@@ -22,7 +24,9 @@ const typeDefs = `
     name: String
     destination: String
     text: String
-    isPublic: Boolean    
+    isPublic: Boolean
+    thumbnail: String
+    category: String     
   }
 
   type Picture {
@@ -40,10 +44,22 @@ const typeDefs = `
     user: User
   }
 
+  enum SortingOrder {
+    ASC
+    DESC
+    ASC_NULLS_LAST
+    DESC_NULLS_FIRS
+  }
+
+  input OrderData {
+    createdAt: SortingOrder
+  }
+
   type Query {
     user(userId: ID!): User
     users: [User]
     trip(tripId: ID!): Trip
+    # recentTrips(): [Trip]
     userTrips(userId: ID!): [Trip]
     trips: [Trip]
     pictures: [Trip]    
@@ -54,7 +70,7 @@ const typeDefs = `
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
     addTrip(trip: TripData!): Trip    
-    updateTrip(tripId: ID!, name: String!, destination: String!, text: String, isPublic: Boolean): Trip
+    updateTrip(tripId: ID!, name: String!, destination: String!, text: String!, isPublic: Boolean!, thumbnail: String, category: String!): Trip
     deleteTrip(tripId: ID!): Trip
     uploadPicture(tripId: ID!, trip: TripPicture!): Trip
   }

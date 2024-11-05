@@ -1,18 +1,44 @@
+import Select from "react-select";
 import { FaEdit } from "react-icons/fa";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { UPDATE_TRIP } from "../utils/mutations";
 import { QUERY_USER_TRIPS } from "../utils/queries";
 
+const categories = [
+  { value: "Business", label: "Business" },
+  { value: "Cultural", label: "Cultural" },
+  { value: "Educational", label: "Educational" },
+  { value: "Leisure", label: "Leisure" },
+];
+
 function UpdateTrip({ trip }) {
+  console.log(trip);
+  const [tripId, setTripId] = useState(trip._id);
   const [name, setName] = useState(trip.name);
+  const [category, setCategory] = useState(trip.category);
   const [destination, setDestination] = useState(trip.destination);
   const [text, setText] = useState(trip.text);
   const [isPublic, setIsPublic] = useState(trip.isPublic);
-  const [tripId, setTripId] = useState(trip._id);
+  const [thumbnail, setThumbnail] = useState(trip.thumbnail);
+
+  // console.log(name, trip.name);
+  // console.log(destination, trip.destination);
+  // console.log(isPublic, trip.isPublic);
+  // console.log(category, trip.category);
+  // console.log(tripId, trip.tripId);
 
   const [updateTrip] = useMutation(UPDATE_TRIP, {
-    variables: { tripId, name, destination, text, isPublic },
+    variables: {
+      tripId,
+      name,
+      category,
+      destination,
+      text,
+      isPublic,
+      thumbnail,
+    },
+    // onCompleted: () => navigate('/profile'),
     refetchQueries: [{ query: QUERY_USER_TRIPS }],
   });
 
@@ -20,19 +46,19 @@ function UpdateTrip({ trip }) {
     setIsPublic(!isPublic);
   };
 
+  const handleSelect = (category) => {
+    setCategory(category.value);
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    if (name === "" || destination === "" || text === "") {
+    if (name === "" || category === "" || destination === "" || text === "") {
       return alert("Please provide input for all fields");
     }
 
-    updateTrip(tripId, name, destination, text, isPublic);
-
-    setName(trip.name);
-    setDestination(trip.destination);
-    setText(trip.text);
-    setIsPublic(trip.isPublic);
+    // updateTrip(tripId, name, category, destination, text, isPublic, thumbnail);
+    updateTrip(name, category, destination, text, isPublic, thumbnail);
   };
 
   return (
@@ -78,6 +104,16 @@ function UpdateTrip({ trip }) {
                   />
                 </div>
                 <div className="mb-3">
+                  <label className="form-label">Category</label>
+                  <Select
+                    name="category"
+                    options={categories}
+                    value={category}
+                    onChange={handleSelect}
+                    searchable="true"
+                  />
+                </div>
+                <div className="mb-3">
                   <label className="form-label">Destination</label>
                   <input
                     type="text"
@@ -108,6 +144,14 @@ function UpdateTrip({ trip }) {
                     />
                     Public
                   </label>
+                </div>
+                <div>
+                  <input
+                    type="file"
+                    // value={""}
+                    onChange={(e) => setThumbnail(e.target.files[0])}
+                    accept="png, jpg"
+                  />
                 </div>
                 <div className="modal-footer">
                   <button

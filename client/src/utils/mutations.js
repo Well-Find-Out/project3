@@ -41,6 +41,7 @@ export const ADD_TRIP = gql`
       text
       name
       isPublic
+      thumbnail
       user {
         _id
       }
@@ -49,13 +50,8 @@ export const ADD_TRIP = gql`
 `;
 
 export const UPDATE_TRIP = gql`
-  mutation updateTrip(
-  $tripId: ID!, 
-  $name: String!, 
-  $destination: String!, 
-  $text: String
-  $isPublic: Boolean) {
-  updateTrip(tripId: $tripId, name: $name, destination: $destination, text: $text, isPublic: $isPublic) {
+mutation updateTrip($tripId: ID!, $name: String!, $isPublic: Boolean!, $category: String!, $thumbnail: String, $text: String!, $destination: String!) {
+  updateTrip(tripId: $tripId, name: $name, isPublic: $isPublic, category: $category, thumbnail: $thumbnail, text: $text, destination: $destination) {
     _id
   }
 }
