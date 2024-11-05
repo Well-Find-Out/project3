@@ -14,14 +14,14 @@ const tripSchema = new Schema({
     required: true,
     trim: true
   },
-  details: {
+  text: {
     type: String,
     required: true,
     minlength: 1,
     maxlength: 500,
     trim: true
   },  
-  public: {
+  isPublic: {
     type: Boolean,
     required: true,
     default: false

@@ -20,3 +20,29 @@ export const QUERY_USERS = gql`
 }
 `;
 
+export const QUERY_TRIPS = gql`
+  {
+    trips {
+      _id
+      name
+      destination
+      text
+      isPublic
+      createdAt
+    }
+}
+`;
+
+export const QUERY_USER_TRIPS = gql`
+  {
+    trips {
+      _id
+      name
+      destination
+      text
+      isPublic
+      createdAt
+    }
+}
+`;
+

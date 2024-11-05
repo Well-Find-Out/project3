@@ -34,19 +34,39 @@ const resolvers = {
       }
       throw AuthenticationError;     
     },
-    
-    addPicture: async (parent, args, context) => {  
+
+    deleteTrip: async (parent, args, context) => {
+      if (context.user) {   
+        const tripId = args.tripId;
+        return await Trip.findOneAndDelete({ _id: tripId });
+      }
+      throw AuthenticationError;     
+    },
+
+    updateTrip: async (parent, args, context) => {  
       if (context.user) { 
         const tripId = args.tripId;
-        return Trip.findByIdAndUpdate(
+        return await Trip.findByIdAndUpdate(
+          { _id: tripId },
+          args,
+          { new: true, })
+          .select('-__v');
+      }
+      
+      throw AuthenticationError; 
+    },
+
+    uploadPicture: async (parent, args, context) => {  
+      if (context.user) { 
+        const tripId = args.tripId;
+        return await Trip.findByIdAndUpdate(
           { _id: tripId },
           { $push: { pictures: args.trip } },     
           ).select('-__v');
           }
       throw AuthenticationError; 
     },
-
-
+    
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -76,7 +96,6 @@ const resolvers = {
       }
 
       const token = signToken(user);
-
       return { token, user };
     },
   },

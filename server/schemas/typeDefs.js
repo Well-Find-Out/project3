@@ -11,8 +11,8 @@ const typeDefs = `
     _id: ID
     name: String
     destination: String
-    details: String
-    public: Boolean
+    text: String
+    isPublic: Boolean
     createdAt: String
     pictures: [Picture]
     user: User
@@ -21,8 +21,8 @@ const typeDefs = `
   input TripData {
     name: String
     destination: String
-    details: String
-    public: Boolean    
+    text: String
+    isPublic: Boolean    
   }
 
   type Picture {
@@ -42,9 +42,9 @@ const typeDefs = `
 
   type Query {
     user(userId: ID!): User
-    # user: User
     users: [User]
     trip(tripId: ID!): Trip
+    userTrips(userId: ID!): [Trip]
     trips: [Trip]
     pictures: [Trip]    
   }
@@ -53,10 +53,10 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    addTrip(trip: TripData!): Trip
-    addPicture(tripId: ID!, trip: TripPicture!): Trip
-    updateTrip(tripId: ID!, name: String!, destination: String!, details: String): Trip
+    addTrip(trip: TripData!): Trip    
+    updateTrip(tripId: ID!, name: String!, destination: String!, text: String, isPublic: Boolean): Trip
     deleteTrip(tripId: ID!): Trip
+    uploadPicture(tripId: ID!, trip: TripPicture!): Trip
   }
 `;
 

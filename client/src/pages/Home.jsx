@@ -5,45 +5,27 @@ import { useEffect } from "react";
 import { SET_USERS } from "../utils/actions";
 
 const Home = () => {
+  const [state, dispatch] = useGlobalContext();
+  const { data, loading } = useQuery(QUERY_USERS);
 
-    
-    const [state, dispatch] = useGlobalContext();
-    const {data, loading} = useQuery(QUERY_USERS);
-    
-    
-    const users = data?.users || []
-    console.log(users);
+  const users = data?.users || [];
+  console.log(users);
 
-    useEffect(() => {
-        dispatch({type: SET_USERS, payload: users})
-    }, [data])
+  useEffect(() => {
+    dispatch({ type: SET_USERS, payload: users });
+  }, [data]);
 
-    if (loading) {
-        return <h3>Loading...</h3>
-    }
-    const publicTrips = users.flatMap(user => 
-      user.trips
-          .filter(trip => trip.public)
-          .map(trip => ({
-              ...trip,
-              author: user.username, 
-              preview: trip.description.split(" ").slice(0, 50).join(" ") 
-          }))
-  );
+  if (loading) {
+    return <h3>Loading...</h3>;
+  }
   return (
     <div className="container">
-     <h1>Travel Blog</h1>
-     {publicTrips.map(trip => (
-                <div key={trip.id} className="trip-card">
-                    <h2>{trip.title}</h2>
-                    <p><strong>Destination:</strong> {trip.destination}</p>
-                    <p><strong>Date:</strong> {trip.date}</p>
-                    <p><strong>Author:</strong> {trip.author}</p>
-                    <p>{trip.preview}...</p>
-                </div>
-            ))}
-        </div>
-    );
+      <h1>HOME</h1>
+      {state.users.map((user) => (
+        <div key={user.email}>{user.email}</div>
+      ))}
+    </div>
+  );
 };
 
 export default Home;
