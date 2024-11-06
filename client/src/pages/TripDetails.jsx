@@ -25,17 +25,20 @@ function TripDetails() {
           <Link className="mb-3" to="/profile">
             ← Go to Profile
           </Link>
+          <div className="card mb-3">
+            <img
+              id="image-size"
+              src={trip.thumbnail}
+              class="img-fluid img-thumbnail"
+              alt={trip.title}
+            />
+          </div>
+
           <div className="card-header d-flex justify-content-between">
             <h5 className="card-title">{trip.name}</h5>
             <p>{trip.isPublic ? <FaEye /> : <FaEyeSlash />}</p>
           </div>
           <div className="card mb-3">
-            <img
-              src={trip.thumbnail}
-              className="card-img-top"
-              alt={trip.title}
-            ></img>
-
             <div className="card-body">
               <h6 className="card-subtitle mb-2 text-body-secondary">
                 {trip.category}

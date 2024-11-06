@@ -19,9 +19,18 @@ const resolvers = {
     trips: async (parent, args) => {
         return Trip.find({}).select('-__v');
     },
-    // recentTrips: async (parent, args) => {
-    //     return Trip.find({isPublic: true}).select('-__v');
-    // },
+    recentTrips: async (parent, args) => {
+      return Trip.find({isPublic: true}).sort({createdAt: -1}).limit(5).select('-__v');
+    },
+    userTrips: async (parent, args, context) => {
+      if (context.user) {
+        const userId = context.user._id;
+        return Trip.find({ user: userId }).sort({ createdAt: -1 }).select('-__v');
+      }
+    },
+    tripsByCategory: async (parent, {category}) => {
+      return Trip.find({category: category}).select('-__v');
+    },
     // pictures: async (parent, args) => {
     //     return Trip.find({}).populate({ path: 'pictures', select: '-__v' });
     // },

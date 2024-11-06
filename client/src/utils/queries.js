@@ -38,6 +38,20 @@ query trips {
 }
 `;
 
+export const QUERY_TRIPS_BY_CATEGORY = gql`
+query TripsByCategory($category: String) {
+  tripsByCategory(category: $category) {
+    _id
+    thumbnail
+    category    
+    isPublic
+    user {
+      _id
+    }
+  }
+}
+`;
+
 
 export const QUERY_TRIP = gql`
   query Trip($tripId: ID!) {
@@ -47,6 +61,8 @@ export const QUERY_TRIP = gql`
     destination
     text
     isPublic
+    thumbnail
+    category
     createdAt
     user {
       _id
@@ -55,28 +71,31 @@ export const QUERY_TRIP = gql`
 }
 `;
 
-// export const QUERY_RECENT_TRIPS = gql`
-//   {
-//     trips (orderBy: { createdAt: ASC }) {
-//       _id
-//       name
-//       destination
-//     }
-// }
-// `;
+export const QUERY_RECENT_TRIPS = gql`
+query recentTrips {
+  recentTrips {
+    _id
+    name
+    thumbnail
+  }
+}
+`;
 
 export const QUERY_USER_TRIPS = gql`
-  {
-    trips {
+query UserTrips {
+  userTrips {
+    _id
+    name
+    destination
+    isPublic
+    category
+    createdAt    
+    text
+    thumbnail
+    user {
       _id
-      name
-      destination
-      text
-      isPublic
-      category
-      thumbnail
-      createdAt
     }
+  }
 }
 `;
 

@@ -33,7 +33,7 @@ function TripCard({ trip }) {
           </div>
           <div className="card-footer text-body-secondary d-flex justify-content-between">
             <div className="d-flex">
-              <small>Created: {trip.createdAt}</small>
+              <small>Created on: {trip.createdAt}</small>
             </div>
             <div className="d-flex gap-3 justify-content-end">
               {/* <UpdateTrip trip={trip} /> */}

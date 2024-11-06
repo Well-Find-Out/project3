@@ -21,6 +21,7 @@ function UpdateTrip({ trip }) {
   const [text, setText] = useState(trip.text);
   const [isPublic, setIsPublic] = useState(trip.isPublic);
   const [thumbnail, setThumbnail] = useState(trip.thumbnail);
+  console.log("thumbnail", trip.thumbnail);
 
   // console.log(name, trip.name);
   // console.log(destination, trip.destination);
