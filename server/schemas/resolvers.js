@@ -68,7 +68,6 @@ const resolvers = {
           }
       throw AuthenticationError; 
     },
-    
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);

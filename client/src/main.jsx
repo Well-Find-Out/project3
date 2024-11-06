@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import TripDetails from "./pages/TripDetails";
+import TestTrip from "./pages/TestImageUpload.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,10 +42,10 @@ const router = createBrowserRouter([
         path: "/trips/:tripId",
         element: <TripDetails />,
       },
-      // {
-      //   path: "/posts",
-      //   element: <AuthorPosts />,
-      // },
+      {
+        path: "/test",
+        element: <TestTrip />,
+      },
 
       // {
       //   path: "/posts/edit/:id",

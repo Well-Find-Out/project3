@@ -30,7 +30,8 @@ const typeDefs = `
   }
 
   type Picture {
-    url: String
+    imageString: String
+    name: String
     description: String
   }
 
