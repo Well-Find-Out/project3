@@ -59,9 +59,10 @@ const typeDefs = `
     user(userId: ID!): User
     users: [User]
     trip(tripId: ID!): Trip
-    # recentTrips(): [Trip]
-    userTrips(userId: ID!): [Trip]
-    trips: [Trip]
+    recentTrips: [Trip]    
+    userTrips: [Trip]
+    trips: [Trip]    
+    tripsByCategory(category: String): [Trip]
     pictures: [Trip]    
   }
 
