@@ -30,13 +30,15 @@ const typeDefs = `
   }
 
   type Picture {
-    url: String
+    imageString: String
+    name: String
     description: String
   }
 
   input TripPicture {
-    url: String
-    description: String   
+    imageString: String
+    name: String
+    description: String  
   }
 
   type Auth {
