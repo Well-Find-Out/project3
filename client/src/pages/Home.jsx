@@ -1,6 +1,6 @@
 import { useGlobalContext } from "../utils/GlobalState";
 import Map from '../components/Map/';
-import { QUERY_TRIPS } from "../utils/queries";
+import { QUERY_TRIPS} from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { SET_TRIPS } from "../utils/actions";
@@ -35,7 +35,7 @@ const Home = () => {
         ? publicTrips.filter(trip => trip.destination === selectedDestination)
         : publicTrips;
     console.log('Public trips after filter:', publicTrips);
-    const destinations = publicTrips.map(trip => trip.destination);
+    const destinations = [...new Set(publicTrips.map(trip => trip.destination))];
           
     return (
       <div className="home-container">
