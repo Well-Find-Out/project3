@@ -26,7 +26,7 @@ const containerStyle = {
     height: '400px',
 };
 
-const Map = ({ locations }) => {
+const Map = ({ locations, onMarkerClick }) => {
     const [map, setMap] = useState(null);
     const [markers, setMarkers] = useState([]);
 
@@ -60,7 +60,8 @@ const Map = ({ locations }) => {
                 onLoad={(map) => setMap(map)}
             >
                 {markers.map((position, index) => (
-                    <Marker key={index} position={position} />
+                    <Marker key={index} position={position} 
+                    onClick={() => onMarkerClick(locations[index])}/>
                 ))}
             </GoogleMap>
         </LoadScript>
