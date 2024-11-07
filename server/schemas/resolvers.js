@@ -1,4 +1,4 @@
-const { User, Trip } = require('../models');
+const { User, Trip, Image } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {

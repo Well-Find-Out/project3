@@ -1,11 +1,23 @@
 import { useRef, useState } from "react";
+// import { UPLOAD_PICTURE } from "../utils/mutations";
 
-function ImageForm({tripId}) {
+function ImageUpload({tripId}) {
     const [imageUrl, setImageUrl] = useState("")
     const form = useRef(null)
     const name = useRef(null)
     const description = useRef(null)
     const image = useRef(null)
+
+    // const [uploadPicture] = useMutation(UPLOAD_PICTURE, {
+    //     variables: {
+    //       tripId,
+    //       imageString,
+    //       name,
+    //       description,
+    //     },
+    //     // onCompleted: () => navigate('/profile'),
+    //     refetchQueries: [{ query: QUERY_USER_TRIPS }],
+    //   });
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -36,4 +48,4 @@ function ImageForm({tripId}) {
     )
 }
 
-export default ImageForm;
+export default ImageUpload;
