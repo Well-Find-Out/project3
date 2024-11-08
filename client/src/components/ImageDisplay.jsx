@@ -1,13 +1,38 @@
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import { useQuery } from "@apollo/client";
+import { QUERY_PICTURES } from "../utils/queries.js";
 
+function ImageDisplay({ tripId }) {
+  // if (!trip.pictures) {
+  //   return <div></div>;
+  // }
+  const { loading, error, data } = useQuery(QUERY_PICTURES, {
+    variables: { tripId },
+  });
 
-function ImageDisplay({...trip}) {
-  if (!trip.pictures) {
-    return(<div></div>)
-  }
-  console.log(trip)
-return (
-  <img src={`data:image/png;base64, ${trip.pictures[0].imageString}`} alt="" style={{width: '200px', height: '200px'}} />)
+  const pictures = data?.picturesTrip.pictures;
+  console.log("pictures", pictures);
+
+  return (
+    <>
+      {!loading && !error && (
+        <Carousel>
+          <div>
+            {pictures.map((img) => (
+              <img
+                // width={200}
+                // height={200}
+                src={`data:image/png;base64, ${img.imageString}`}
+                alt={img.name}
+              />
+            ))}
+
+            <p className="legend">Legend 1</p>
+          </div>
+        </Carousel>
+      )}
+    </>
+  );
 }
 export default ImageDisplay;
-
-

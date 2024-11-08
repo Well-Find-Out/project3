@@ -65,7 +65,7 @@ const typeDefs = `
     userTrips: [Trip]
     trips: [Trip]    
     tripsByCategory(category: String): [Trip]
-    pictures: [Trip]    
+    picturesTrip(tripId: ID!): Trip
   }
 
   type Mutation {

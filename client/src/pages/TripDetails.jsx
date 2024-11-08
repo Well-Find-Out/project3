@@ -6,7 +6,6 @@ import EditTrip from "../components/EditTrip.jsx";
 import ImageUpload from "../components/ImageUpload.jsx";
 import ImageDisplay from "../components/ImageDisplay.jsx";
 
-
 function TripDetails() {
   const { tripId } = useParams();
   const { loading, error, data } = useQuery(QUERY_TRIP, {
@@ -49,8 +48,8 @@ function TripDetails() {
             <p>{trip.isPublic ? <FaEye /> : <FaEyeSlash />}</p>
           </div>
           <div className="card mb-3">
+            <ImageDisplay tripId={tripId} />
             <div className="card-body">
-
               <h6 className="card-subtitle mb-2 text-body-secondary">
                 {trip.category}
               </h6>
