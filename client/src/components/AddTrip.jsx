@@ -30,7 +30,7 @@ function AddTrip() {
     variables: {
       trip: { name, category, destination, text, isPublic, thumbnail },
     },
-    refetchQueries: [{ query: QUERY_USER_TRIPS },{ query: QUERY_TRIPS } ],
+    refetchQueries: [{ query: QUERY_USER_TRIPS } ],
   });
 
   const handleIsChecked = () => {
