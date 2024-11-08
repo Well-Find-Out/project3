@@ -1,14 +1,49 @@
-import Jumbotron from "../components/Jumbotron";
-
 const About = () => {
+
+
+  const developers = [
+    {
+      name: "Katherine",
+      pronouns: "(She/They)",
+      description: "Hi! I'm Katherine, a former attorney turned artist and web developer. I'm currently enjoying spending time building web applications and problem solving. I'm excited to learn new ways to solve interesting problems.",
+      github: "https://github.com/katherinearenas", 
+    },
+    {
+      name: "Cong",
+      pronouns: "(She/Her)",
+      description: "I'm Cong Wang, a researcher in education and psychology. I am currently transitioning my career to pursue opportunities in software engineering and website development. I am passionate about leveraging technology to solve complex problems and create positive change.",
+      github: "https://github.com/hydy1943cong",
+    },
+    {
+      name: "Anastasia",
+      pronouns: "(She/Her)",
+      description: "Web developer with expertise in front-end and back-end technologies. Let's collaborate on a website that exceeds your expectations!",
+      github: "https://github.com/akravt1274",
+    },
+    
+  ];
+
   return (
-    <div>
-      <Jumbotron>
-        <h1>ABOUT - Team 1</h1>
-        <p>All about the creators of this project</p>
-      </Jumbotron>
+    <div className="container text-center my-5">
+      <h1 className="mb-4">Meet the Developers</h1>
+      <div className="row justify-content-center">
+        {developers.map((dev, index) => (
+          <div key={index} className="col-md-4">
+            <div className="card mb-4 shadow-sm">
+              {/* <img src={dev.image} alt={`${dev.name}'s profile`} className="card-img-top rounded-circle mx-auto mt-3" style={{ width: '150px', height: '150px' }} /> */}
+              <div className="card-body">
+                <h5 className="card-title">{dev.name} {dev.pronouns}</h5>
+                <p className="card-text">{dev.description}</p>
+                <div><a href={dev.github}>{dev.name}'s Github</a></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
+
 export default About;
+
