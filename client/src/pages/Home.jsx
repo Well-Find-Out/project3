@@ -1,8 +1,8 @@
 import { useGlobalContext } from "../utils/GlobalState";
 import Map from '../components/Map/';
-import { QUERY_TRIPS } from "../utils/queries";
+import { QUERY_TRIPS} from "../utils/queries";
 import { useQuery } from "@apollo/client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SET_TRIPS } from "../utils/actions";
 import './Home.css';
 
@@ -10,6 +10,7 @@ const Home = () => {
 
     const [state, dispatch] = useGlobalContext();
     const {data, loading, error} = useQuery(QUERY_TRIPS);
+    const [selectedDestination, setSelectedDestination] = useState(null);
     
     console.log('Data:', data);
     const trips = data?.trips || []
@@ -30,8 +31,11 @@ const Home = () => {
         return <h3>Error: {error.message}</h3>;
     }
     const publicTrips = (state.trips || []).filter(trip => trip.isPublic);
+    const filteredTrips = selectedDestination
+        ? publicTrips.filter(trip => trip.destination === selectedDestination)
+        : publicTrips;
     console.log('Public trips after filter:', publicTrips);
-    const destinations = publicTrips.map(trip => trip.destination);
+    const destinations = [...new Set(publicTrips.map(trip => trip.destination))];
           
     return (
       <div className="home-container">
@@ -42,12 +46,12 @@ const Home = () => {
 
           <div className="map-section">
               <h2 className="map-title">Discover unforgettable travel experiences from around the world.</h2>
-              <Map locations={destinations} /> 
+              <Map locations={destinations} onMarkerClick={setSelectedDestination}/> 
           </div>
 
           <div className="trips-container">
-              {publicTrips.length > 0 ? ( 
-                  publicTrips.map(trip => (
+              {filteredTrips.length > 0 ? ( 
+                  filteredTrips.map(trip => (
                       <div key={trip._id} className="trip-card">
                           <h2 className="trip-title">{trip.name}</h2>
                           <p><strong>Destination:</strong> {trip.destination}</p>
