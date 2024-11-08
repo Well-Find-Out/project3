@@ -15,9 +15,9 @@ function ImageUpload({tripId}) {
     //       name,
     //       description,
     //     },
-    //     // onCompleted: () => navigate('/profile'),
     //     refetchQueries: [{ query: QUERY_USER_TRIPS }],
     //   });
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -43,7 +43,7 @@ function ImageUpload({tripId}) {
                 <input type="text" ref={description} name="description" id="description" /></label>
                 <button>SEND</button>
             </form>
-            <img src={`data:image/png;base64, ${imageUrl}`} alt="" />
+            {image == "" || image == null ? "": <div><h6>Your Image Preview</h6><img width={100} height={100} src={`data:image/png;base64, ${imageUrl}`} alt="" /></div>} 
         </div>
     )
 }

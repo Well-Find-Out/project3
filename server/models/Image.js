@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const imageSchema = new Schema({
+const imageSchema = new Schema(
+  {
   imageString: {
     type: String,
     required: true,
@@ -20,8 +21,9 @@ const imageSchema = new Schema({
     required: true,
     trim: true
   }
-});
+},{ collection: "Image"}
+);
 
-const Image = mongoose.model('Image', imageSchema);
+const Image = mongoose.model("Image", imageSchema);
 
 module.exports = Image;

@@ -36,18 +36,21 @@ function TripDetails() {
               alt={trip.title}
             />
           </div> */}
-          <div className="card mb-3">
-            <ImageDisplay tripId={tripId} />
-          </div>
+          {/* <img src={`data:image/png;base64, ${trip.pictures.imageString}`} alt="" style={{width: '200px', height: '200px'}} /> */}
+          {/* <div className="card mb-3">
+            <ImageDisplay trip={trip} />
+          </div> */}
           <div className="card mb-3">
             <ImageUpload tripId={tripId} />
           </div>
+          {/* <img src={`data:image/png;base64, ${trip.pictures[0]}`} alt="" style={{width: '200px', height: '200px'}} /> */}
           <div className="card-header d-flex justify-content-between">
             <h5 className="card-title">{trip.name}</h5>
             <p>{trip.isPublic ? <FaEye /> : <FaEyeSlash />}</p>
           </div>
           <div className="card mb-3">
             <div className="card-body">
+
               <h6 className="card-subtitle mb-2 text-body-secondary">
                 {trip.category}
               </h6>
