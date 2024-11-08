@@ -99,3 +99,15 @@ query UserTrips {
 }
 `;
 
+export const QUERY_PICTURES = gql`
+query picturesTrip($tripId: ID!) {
+  picturesTrip(tripId: $tripId) {
+    pictures {
+      name
+      description
+      imageString
+    }
+  }
+}
+`;
+

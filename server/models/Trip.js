@@ -40,7 +40,10 @@ const tripSchema = new Schema({
   },  
   pictures: [
     {
-      url: {
+      imageString: {
+        type: String
+      },
+      name: {
         type: String
       },
       description: {

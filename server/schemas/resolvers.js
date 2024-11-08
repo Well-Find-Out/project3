@@ -1,4 +1,4 @@
-const { User, Trip } = require('../models');
+const { User, Trip, Image } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -31,9 +31,12 @@ const resolvers = {
     tripsByCategory: async (parent, {category}) => {
       return Trip.find({category: category}).select('-__v');
     },
-    // pictures: async (parent, args) => {
-    //     return Trip.find({}).populate({ path: 'pictures', select: '-__v' });
-    // },
+    picturesTrip: async (parent, { tripId }, context) => {
+      if (context.user) {
+        // return Trip.findById({ _id: tripId }).populate({ path: 'pictures', select: '-__v' });
+        return Trip.findById({ _id: tripId }).select('-__v');
+      }
+    },
   },
   Mutation: {
     addTrip: async (parent, args, context) => {

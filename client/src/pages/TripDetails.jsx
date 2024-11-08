@@ -3,6 +3,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useQuery } from "@apollo/client";
 import { QUERY_TRIP } from "../utils/queries.js";
 import EditTrip from "../components/EditTrip.jsx";
+import ImageUpload from "../components/ImageUpload.jsx";
+import ImageDisplay from "../components/ImageDisplay.jsx";
 
 function TripDetails() {
   const { tripId } = useParams();
@@ -25,13 +27,12 @@ function TripDetails() {
           <Link className="mb-3" to="/profile">
             ← Go to Profile
           </Link>
+
           <div className="card mb-3">
-            <img
-              id="image-size"
-              src={trip.thumbnail}
-              class="img-fluid img-thumbnail"
-              alt={trip.title}
-            />
+            <ImageUpload tripId={tripId} />
+          </div>
+          <div>
+            <ImageDisplay tripId={tripId} />
           </div>
 
           <div className="card-header d-flex justify-content-between">
