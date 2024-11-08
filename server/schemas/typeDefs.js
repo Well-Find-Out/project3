@@ -30,13 +30,15 @@ const typeDefs = `
   }
 
   type Picture {
-    url: String
+    imageString: String
+    name: String
     description: String
   }
 
   input TripPicture {
-    url: String
-    description: String   
+    imageString: String
+    name: String
+    description: String  
   }
 
   type Auth {
@@ -73,7 +75,7 @@ const typeDefs = `
     addTrip(trip: TripData!): Trip    
     updateTrip(tripId: ID!, name: String!, destination: String!, text: String!, isPublic: Boolean!, thumbnail: String, category: String!): Trip
     deleteTrip(tripId: ID!): Trip
-    uploadPicture(tripId: ID!, trip: TripPicture!): Trip
+    uploadPicture(tripId: ID!, imageString: String!, name: String, description: String): Trip
   }
 `;
 
