@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import path from "path";
 import fs from "fs";
 import { ADD_TRIP } from "../utils/mutations";
-import { QUERY_USER_TRIPS,QUERY_TRIPS } from "../utils/queries";
+import { QUERY_USER_TRIPS } from "../utils/queries";
 
 const categories = [
   { value: "Business", label: "Business" },
