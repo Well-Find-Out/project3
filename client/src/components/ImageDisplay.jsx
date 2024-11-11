@@ -8,7 +8,7 @@ function ImageDisplay({ tripId }) {
   });
 
   const pictures = data?.picturesTrip.pictures;
-  console.log("pictures", pictures);
+  // console.log("pictures", pictures);
 
   return (
     <>

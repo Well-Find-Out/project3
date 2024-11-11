@@ -1,14 +1,13 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import { useState } from "react";
-import DeleteTrip from "../components/DeleteTrip";
-// import UpdateTrip from "./UpdateTrip";
 
-function TripCard({ trip }) {
+function TripCard({ trip, userId }) {
   const text = trip.text;
   const shortText = text.length > 150 ? text.substring(0, 150) + "..." : text;
 
   const title = trip.name;
   const shortTitle = title.length > 40 ? title.substring(0, 40) + "..." : title;
+
+  console.log("userId", userId);
 
   return (
     <>
@@ -34,10 +33,6 @@ function TripCard({ trip }) {
           <div className="card-footer text-body-secondary d-flex justify-content-between">
             <div className="d-flex">
               <small>Created on: {trip.createdAt}</small>
-            </div>
-            <div className="d-flex gap-3 justify-content-end">
-              {/* <UpdateTrip trip={trip} /> */}
-              <DeleteTrip trip={trip} />
             </div>
           </div>
         </div>

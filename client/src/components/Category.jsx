@@ -1,28 +1,27 @@
 import { useQuery } from "@apollo/client";
-import { QUERY_TRIPS_BY_CATEGORY } from "../utils/queries.js";
+import { QUERY_CATEGORY } from "../utils/queries.js";
 
 function Category() {
-  const { loading, error, data } = useQuery(QUERY_TRIPS_BY_CATEGORY);
-  const trips = data?.tripsByCategory || [];
-  console.log("Trips by Category", trips);
+  const { loading, error, data } = useQuery(QUERY_CATEGORY);
+  
+  const categoryList = data?.categoryList || [];
+  const array = [];
+  categoryList.forEach((element) => {
+    array.push(element.category);
+  });
 
-  if (loading) {
-    return <h3>Loading...</h3>;
-  }
-  if (error) {
-    return <h3>Error...</h3>;
-  }
+  const categories = [...new Set(array)];
 
   return (
     <>
-      <h5 className="mx-3">Trips By Category</h5>
+      <h5 className="mt-5 mx-3">CATEGORIES</h5>
       {!loading && !error && (
-        <ul className="list-group list-group-flush">
-          {/* {trips.map((trip) => (
-            <li className="list-group-item" key={trip._id}>
-              <a href={`/trips/${trip.category}`}>{trip.category}</a>
+        <ul className="px-2 list-group w-50">
+          {categories.map((category) => (
+            <li className="list-group-item" key={category}>
+              <a href={`/trips/${category.toLowerCase()}`}>{category}</a>
             </li>
-          ))} */}
+          ))}
         </ul>
       )}
     </>

@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import TripDetails from "./pages/TripDetails";
+import TripsByCategory from "./pages/TripsByCategory.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,15 +43,10 @@ const router = createBrowserRouter([
         path: "/trips/:tripId",
         element: <TripDetails />,
       },
-      // {
-      //   path: "/posts",
-      //   element: <AuthorPosts />,
-      // },
-
-      // {
-      //   path: "/posts/edit/:id",
-      //   element: <EditPost />,
-      // },
+      {
+        path: "/trips/:category",
+        element: <TripsByCategory />,
+      },
     ],
   },
 ]);

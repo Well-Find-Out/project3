@@ -3,6 +3,7 @@ const typeDefs = `
     _id: ID
     firstName: String
     lastName: String
+    userName: String
     email: String
     trips: [Trip]
   }
@@ -46,31 +47,21 @@ const typeDefs = `
     user: User
   }
 
-  enum SortingOrder {
-    ASC
-    DESC
-    ASC_NULLS_LAST
-    DESC_NULLS_FIRS
-  }
-
-  input OrderData {
-    createdAt: SortingOrder
-  }
-
   type Query {
     user(userId: ID!): User
     users: [User]
     trip(tripId: ID!): Trip
     recentTrips: [Trip]    
     userTrips: [Trip]
-    trips: [Trip]    
+    trips: [Trip]
+    categoryList: [Trip] 
     tripsByCategory(category: String): [Trip]
     picturesTrip(tripId: ID!): Trip
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
+    addUser(firstName: String!, lastName: String!, userName: String!, email: String!, password: String!): Auth
+    updateUser(firstName: String, lastName: String, userName: String!, email: String, password: String): User
     login(email: String!, password: String!): Auth
     addTrip(trip: TripData!): Trip    
     updateTrip(tripId: ID!, name: String!, destination: String!, text: String!, isPublic: Boolean!, thumbnail: String, category: String!): Trip
