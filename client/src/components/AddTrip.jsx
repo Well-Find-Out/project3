@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import path from "path";
 import fs from "fs";
 import { ADD_TRIP } from "../utils/mutations";
-import { QUERY_USER_TRIPS,QUERY_TRIPS } from "../utils/queries";
+import { QUERY_USER_TRIPS, QUERY_CATEGORY } from "../utils/queries";
 
 const categories = [
   { value: "Business", label: "Business" },
@@ -22,15 +22,13 @@ function AddTrip() {
   const [category, setCategory] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
 
-  // useEffect(() => {
-  //   console.log("File has been set.");
-  // }, [thumbnail]);
+  // const [show, setShow] = useState(false);
 
   const [addTrip] = useMutation(ADD_TRIP, {
     variables: {
       trip: { name, category, destination, text, isPublic, thumbnail },
     },
-    refetchQueries: [{ query: QUERY_USER_TRIPS } ],
+    refetchQueries: [{ query: QUERY_USER_TRIPS }, { query: QUERY_CATEGORY }],
   });
 
   const handleIsChecked = () => {
@@ -40,12 +38,6 @@ function AddTrip() {
   const handleSelect = (category) => {
     setCategory(category.value);
   };
-
-  // const handleFile = (thumbnail) => {
-  //   // const fileInfo = thumbnail.target.files[0];
-  //   // console.log(fileInfo);
-  //   setThumbnail(thumbnail.target.files[0]);
-  // };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -68,13 +60,14 @@ function AddTrip() {
     <>
       <button
         type="button"
-        className="btn btn-primary mx-4 mb-3"
+        className="btn btn-primary"
+        // onClick={() => setShow(true)}
         data-bs-toggle="modal"
         data-bs-target="#addTripModal"
       >
         <div className="d-flex align-items-center">
           <FaEarthAmericas className="icon" />
-          <div>Add Trip</div>
+          <div>Create post</div>
         </div>
       </button>
 
@@ -87,8 +80,11 @@ function AddTrip() {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h3 className="modal-title fs-5" id="addTripModalLabel">
-                Add Trip
+              <h3
+                className="modal-title fs-5 label-text"
+                id="addTripModalLabel"
+              >
+                Create Post
               </h3>
               <button
                 type="button"
@@ -100,7 +96,7 @@ function AddTrip() {
             <div className="modal-body">
               <form onSubmit={handleFormSubmit}>
                 <div className="mb-3">
-                  <label className="form-label">Title</label>
+                  <label className="form-label label-text">Title</label>
                   <input
                     type="text"
                     className="form-control"
@@ -110,7 +106,7 @@ function AddTrip() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Category</label>
+                  <label className="form-label label-text">Category</label>
                   <Select
                     name="category"
                     options={categories}
@@ -119,7 +115,7 @@ function AddTrip() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Destination</label>
+                  <label className="form-label label-text">Destination</label>
                   <input
                     type="text"
                     className="form-control"
@@ -129,7 +125,7 @@ function AddTrip() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Trip Info</label>
+                  <label className="form-label label-text">Trip Info</label>
                   <textarea
                     className="form-control"
                     id="text"
@@ -139,7 +135,7 @@ function AddTrip() {
                   ></textarea>
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">
+                  <label className="form-label label-text">
                     <input
                       type="checkbox"
                       className="form-check-input"
@@ -151,7 +147,7 @@ function AddTrip() {
                   </label>
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Thumbnail</label>
+                  <label className="form-label label-text">Thumbnail</label>
                   <input
                     type="text"
                     className="form-control"
@@ -160,15 +156,6 @@ function AddTrip() {
                     onChange={(e) => setThumbnail(e.target.value)}
                   />
                 </div>
-                {/* <div>
-                  <input
-                    type="file"
-                    // value={""}
-                    // onChange={(e) => setThumbnail(e.target.files[0])}
-                    onChange={handleFile}
-                    accept="png, jpg"
-                  />
-                </div> */}
                 <div className="modal-footer">
                   <button
                     type="button"
@@ -182,7 +169,7 @@ function AddTrip() {
                     data-bs-dismiss="modal"
                     className="btn btn-primary"
                   >
-                    Add
+                    Create
                   </button>
                 </div>
               </form>

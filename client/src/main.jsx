@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import App from "./App.jsx";
 import Home from "./pages/Home";
@@ -10,6 +11,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import TripDetails from "./pages/TripDetails";
+import TripsByCategory from "./pages/TripsByCategory.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,15 +43,10 @@ const router = createBrowserRouter([
         path: "/trips/:tripId",
         element: <TripDetails />,
       },
-      // {
-      //   path: "/posts",
-      //   element: <AuthorPosts />,
-      // },
-
-      // {
-      //   path: "/posts/edit/:id",
-      //   element: <EditPost />,
-      // },
+      {
+        path: "/trips/:category",
+        element: <TripsByCategory />,
+      },
     ],
   },
 ]);

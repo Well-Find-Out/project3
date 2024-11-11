@@ -6,33 +6,19 @@ import Category from "../components/Category";
 function Profile() {
   return (
     <>
-      <h1 className="text-center mb-4">My Trips</h1>
+      {/* <h1 className="text-center label-text mb-2">My Adventures</h1> */}
       <div className="row">
-        <div className="col-sm-3">
+        <div className="d-flex justify-content-end px-4">
           <AddTrip />
-          <RecentTrips />
-          {/* <Category /> */}
-          <div>
-            <h5 className="mt-5 mx-3">CATEGORIES</h5>
-
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <a href={`/trips/category`}>Business</a>
-              </li>
-              <li class="list-group-item">
-                <a href={`/trips/category`}>Cultural</a>
-              </li>
-              <li class="list-group-item">
-                <a href={`/trips/category`}>Educational</a>
-              </li>
-              <li class="list-group-item">
-                <a href={`/trips/category`}>Leisure</a>
-              </li>
-            </ul>
-          </div>
         </div>
-        <div className="col-sm-9">
-          <Trips />
+        <div className="d-flex p-4">
+          <div className="col-sm-3">
+            <RecentTrips />
+            <Category />
+          </div>
+          <div className="col-sm-9">
+            <Trips />
+          </div>
         </div>
       </div>
     </>

@@ -1,5 +1,3 @@
-import Header from "./components/Header";
-// import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,8 +7,6 @@ import {
 
 import { setContext } from "@apollo/client/link/context";
 import { GlobalProvider } from "./utils/GlobalState";
-// import Nav from './components/Nav';
-// import Pictures from "./components/Pictures";
 import MainLayout from "./components/MainLayout";
 
 const httpLink = createHttpLink({

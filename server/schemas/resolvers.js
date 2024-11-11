@@ -5,7 +5,8 @@ const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id);        
+        const user = await User.findById(context.user._id); 
+        console.log(user);
         return user;
       }
       throw AuthenticationError;
@@ -28,8 +29,18 @@ const resolvers = {
         return Trip.find({ user: userId }).sort({ createdAt: -1 }).select('-__v');
       }
     },
-    tripsByCategory: async (parent, {category}) => {
-      return Trip.find({category: category}).select('-__v');
+//     tripsByCategory: async (parent, { category }) => {
+//       const params = {};
+//       if (category) {
+//         params.category = category;
+//       }
+// // return await Product.find(params).populate('category');
+//       return await Trip.distinct('category', { category: params }).select('-__v');
+//     },
+    categoryList: async (parent, args) => {
+      // const res = await Trip.distinct('category');
+      // console.log(res);
+      return (await Trip.find().populate('category').select('-__v'));      
     },
     picturesTrip: async (parent, { tripId }, context) => {
       if (context.user) {

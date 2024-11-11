@@ -1,6 +1,5 @@
-import logo from "../assets/logo.png";
+import logo from "../assets/logo_earth.png";
 import Navigation from "./Navigation";
-// import { FaBars } from "react-icons/fa";
 
 function Header() {
   return (
@@ -9,21 +8,10 @@ function Header() {
         <a className="navbar-brand" href="/">
           <div className="d-flex">
             <img src={logo} alt="logo" className="mr-2" />
-            <div>World Travellers</div>
+            <div className="fs-2">World Travellers</div>
           </div>
         </a>
         <Navigation />
-        {/* <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <FaBars />
-        </button> */}
       </div>
     </nav>
   );

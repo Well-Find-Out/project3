@@ -147,14 +147,6 @@ function EditTrip({ trip }) {
                     onChange={(e) => setThumbnail(e.target.value)}
                   />
                 </div>
-                {/* <div>
-                  <input
-                    type="file"
-                    // value={""}
-                    onChange={(e) => setThumbnail(e.target.files[0])}
-                    accept="png, jpg"
-                  />
-                </div> */}
                 <div className="modal-footer">
                   <button
                     type="button"

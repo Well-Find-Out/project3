@@ -3,8 +3,10 @@ import { gql } from '@apollo/client';
 export const QUERY_USER = gql`
   {
     user {
+      _id
       firstName
       lastName
+      userName
     }
   }
 `;
@@ -38,6 +40,14 @@ query trips {
 }
 `;
 
+export const QUERY_CATEGORY = gql`
+query categoryList {
+  categoryList {
+    category
+  }
+}
+`;
+
 export const QUERY_TRIPS_BY_CATEGORY = gql`
 query TripsByCategory($category: String) {
   tripsByCategory(category: $category) {
@@ -51,7 +61,6 @@ query TripsByCategory($category: String) {
   }
 }
 `;
-
 
 export const QUERY_TRIP = gql`
   query Trip($tripId: ID!) {
