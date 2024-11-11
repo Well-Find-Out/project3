@@ -11,9 +11,9 @@ const Navigation = () => {
         <NavLink to="/profile" className="mx-1 navbar-brand">
           Profile
         </NavLink>
-        <NavLink to="/users" className="mx-1 navbar-brand">
+        {/* <NavLink to="/users" className="mx-1 navbar-brand">
           Authors
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/about" className="mx-1 navbar-brand">
           About
         </NavLink>
@@ -32,9 +32,9 @@ const Navigation = () => {
         <NavLink to="/" className="mx-1 navbar-brand">
           Home
         </NavLink>
-        <NavLink to="/users" className="mx-1 navbar-brand">
+        {/* <NavLink to="/users" className="mx-1 navbar-brand">
           Authors
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/about" className="mx-1 navbar-brand">
           About
         </NavLink>
