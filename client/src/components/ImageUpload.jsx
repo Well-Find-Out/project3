@@ -35,7 +35,7 @@ function ImageUpload({ tripId }) {
     const answer = await response.json();
     console.log(answer);
     setImageUrl(answer.imageString);
-    setShow;
+    setShow(false);
   };
   return (
     <>
