@@ -46,7 +46,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="header-section">
-        <h1 className="website-title">WRLD TRAVELLERS</h1>
+        <h1 className="website-title">WORLD TRAVELLERS</h1>
         <span className="subtitle">A PLACE TO KEEP YOUR MEMORIES.</span>
         <br />
       </div>
