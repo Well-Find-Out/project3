@@ -1,16 +1,17 @@
 const About = () => {
-
   const developers = [
     {
       name: "Katherine",
       pronouns: "(She/They)",
-      description: "Hi! I'm Katherine, current artist and web developer and former attorney. I'm currently enjoying spending time building web applications and problem solving. I'm always excited to learn new solutions to interesting problems.",
-      github: "https://github.com/katherinearenas", 
+      description:
+        "Hi! I'm Katherine, current artist and web developer and former attorney. I'm currently enjoying spending time building web applications and problem solving. I'm always excited to learn new solutions to interesting problems.",
+      github: "https://github.com/katherinearenas",
     },
     {
       name: "Cong",
       pronouns: "(She/Her)",
-      description: "I'm Cong Wang, a researcher in education and psychology. I am currently transitioning my career to pursue opportunities in software engineering and website development. I am passionate about leveraging technology to solve complex problems and create positive change.",
+      description:
+        "I'm Cong Wang, a researcher in education and psychology. I am currently transitioning my career to pursue opportunities in software engineering and website development. I am passionate about leveraging technology to solve complex problems and create positive change.",
       github: "https://github.com/hydy1943cong",
     },
     {
@@ -38,9 +39,6 @@ const About = () => {
                 <div>
                   <a href={dev.github}>{dev.name}'s Github</a>
                 </div>
-                <h5 className="card-title">{dev.name} {dev.pronouns}</h5>
-                <p className="card-text">{dev.description}</p>
-                <div><a href={dev.github}>{dev.name}'s Github</a></div>
               </div>
             </div>
           </div>
@@ -49,6 +47,5 @@ const About = () => {
     </div>
   );
 };
-
 
 export default About;
