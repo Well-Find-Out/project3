@@ -5,6 +5,8 @@ import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { SET_TRIPS } from "../utils/actions";
 import './Home.css';
+import { Link } from "react-router-dom";
+import ImageHome from "../components/ImageHome.jsx";
 
 const Home = () => {
 
@@ -36,7 +38,9 @@ const Home = () => {
         : publicTrips;
     console.log('Public trips after filter:', publicTrips);
     const destinations = [...new Set(publicTrips.map(trip => trip.destination))];
-          
+    const resetFilter = () => {
+        setSelectedDestination(null);
+      };
     return (
       <div className="home-container">
           <div className="header-section">
@@ -47,17 +51,22 @@ const Home = () => {
           <div className="map-section">
               <h2 className="map-title">Discover unforgettable travel experiences from around the world.</h2>
               <Map locations={destinations} onMarkerClick={setSelectedDestination}/> 
+              <button className="reset-button" onClick={resetFilter}>View All Trips</button>
+
           </div>
 
           <div className="trips-container">
               {filteredTrips.length > 0 ? ( 
                   filteredTrips.map(trip => (
+                    <Link to={`/trips/${trip._id}`} key={trip._id} className="trip-link">
                       <div key={trip._id} className="trip-card">
                           <h2 className="trip-title">{trip.name}</h2>
                           <p><strong>Destination:</strong> {trip.destination}</p>
                           <p><strong>Date:</strong> {trip.createdAt}</p>
+                <ImageHome tripId={trip._id} />
                           <p className="trip-details">{trip.text.slice(0, 100)}...</p>
                       </div>
+                      </Link>
                   ))
               ) : (
                   <p>No public trips available.</p> 

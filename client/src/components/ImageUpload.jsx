@@ -21,7 +21,7 @@ function ImageUpload({ tripId }) {
     });
     const answer = await response.json();
     setImageUrl(answer.imageString);
-    setShow;
+    setShow(false);
   };
   const refreshPage = () => {
     window.location.reload(true);
