@@ -64,11 +64,7 @@ const Home = () => {
       <div className="trips-container">
         {filteredTrips.length > 0 ? (
           filteredTrips.map((trip) => (
-            <Link
-              to={`/trips/${trip._id}`}
-              key={trip._id}
-              className="trip-link"
-            >
+            <Link to={`/${trip._id}`} key={trip._id} className="trip-link">
               <div key={trip._id} className="trip-card">
                 <h2 className="trip-title">
                   <a href={`/${trip._id}`}>{trip.name}</a>
