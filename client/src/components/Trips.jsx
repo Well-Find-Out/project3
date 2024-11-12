@@ -5,6 +5,7 @@ import TripCard from "./TripCard.jsx";
 function Profile() {
   const { loading, error, data } = useQuery(QUERY_USER_TRIPS);
   const userTrips = data?.userTrips || [];
+  console.log("Profile trips", userTrips);
 
   if (loading) {
     return <h3>Loading...</h3>;

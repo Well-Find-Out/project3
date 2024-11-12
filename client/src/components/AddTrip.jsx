@@ -1,9 +1,7 @@
 import Select from "react-select";
 import { FaEarthAmericas } from "react-icons/fa6";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import path from "path";
-import fs from "fs";
 import { ADD_TRIP } from "../utils/mutations";
 import { QUERY_USER_TRIPS, QUERY_CATEGORY } from "../utils/queries";
 
@@ -21,8 +19,6 @@ function AddTrip() {
   const [isPublic, setIsPublic] = useState(false); // Public - Initial state is unchecked
   const [category, setCategory] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
-
-  // const [show, setShow] = useState(false);
 
   const [addTrip] = useMutation(ADD_TRIP, {
     variables: {
@@ -61,7 +57,6 @@ function AddTrip() {
       <button
         type="button"
         className="btn btn-primary"
-        // onClick={() => setShow(true)}
         data-bs-toggle="modal"
         data-bs-target="#addTripModal"
       >
