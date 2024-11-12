@@ -79,7 +79,7 @@ function EditTrip({ trip }) {
                 className="modal-title fs-5 label-text"
                 id="updateTripModalLabel"
               >
-                Edit Trip
+                Edit Post
               </h3>
               <button
                 type="button"
