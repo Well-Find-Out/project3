@@ -21,6 +21,7 @@ function EditTrip({ trip }) {
   const [isPublic, setIsPublic] = useState(trip.isPublic);
   const [thumbnail, setThumbnail] = useState(trip.thumbnail);
 
+  console.log("category", category);
   const [updateTrip] = useMutation(UPDATE_TRIP, {
     variables: {
       tripId,
@@ -49,10 +50,11 @@ function EditTrip({ trip }) {
     if (name === "" || category === "" || destination === "" || text === "") {
       return alert("Please provide input for all fields");
     }
-
     updateTrip(name, category, destination, text, isPublic, thumbnail);
   };
-
+  const refreshPage = () => {
+    window.location.reload(true);
+  };
   return (
     <>
       <button
@@ -73,7 +75,10 @@ function EditTrip({ trip }) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h3 className="modal-title fs-5" id="updateTripModalLabel">
+              <h3
+                className="modal-title fs-5 label-text"
+                id="updateTripModalLabel"
+              >
                 Edit Trip
               </h3>
               <button
@@ -86,7 +91,7 @@ function EditTrip({ trip }) {
             <div className="modal-body">
               <form onSubmit={handleFormSubmit}>
                 <div className="mb-3">
-                  <label className="form-label">Title</label>
+                  <label className="form-label label-text">Title</label>
                   <input
                     type="text"
                     className="form-control"
@@ -96,17 +101,17 @@ function EditTrip({ trip }) {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Category</label>
+                  <label className="form-label label-text">Category</label>
                   <Select
                     name="category"
                     options={categories}
-                    value={category}
+                    value={trip.category}
                     onChange={handleSelect}
                     searchable="true"
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Destination</label>
+                  <label className="form-label label-text">Destination</label>
                   <input
                     type="text"
                     className="form-control"
@@ -116,7 +121,7 @@ function EditTrip({ trip }) {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Trip Info</label>
+                  <label className="form-label label-text">Trip Info</label>
                   <textarea
                     className="form-control"
                     id="text"
@@ -126,7 +131,7 @@ function EditTrip({ trip }) {
                   ></textarea>
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">
+                  <label className="form-label label-text">
                     <input
                       type="checkbox"
                       className="form-check-input"
@@ -138,7 +143,7 @@ function EditTrip({ trip }) {
                   </label>
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Thumbnail</label>
+                  <label className="form-label label-text">Thumbnail</label>
                   <input
                     type="text"
                     className="form-control"
@@ -159,6 +164,7 @@ function EditTrip({ trip }) {
                     type="submit"
                     data-bs-dismiss="modal"
                     className="btn btn-primary"
+                    onClick={refreshPage}
                   >
                     Update
                   </button>

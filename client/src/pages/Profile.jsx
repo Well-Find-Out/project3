@@ -6,11 +6,11 @@ import Category from "../components/Category";
 function Profile() {
   return (
     <>
-      {/* <h1 className="text-center label-text mb-2">My Adventures</h1> */}
       <div className="row">
         <div className="d-flex justify-content-end px-4">
           <AddTrip />
         </div>
+        <h1 className="text-center label-text mb-2">My Adventures</h1>
         <div className="d-flex p-4">
           <div className="col-sm-3">
             <RecentTrips />

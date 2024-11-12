@@ -1,6 +1,5 @@
 const About = () => {
 
-
   const developers = [
     {
       name: "Katherine",
@@ -17,10 +16,10 @@ const About = () => {
     {
       name: "Anastasia",
       pronouns: "(She/Her)",
-      description: "Web developer with expertise in front-end and back-end technologies. Let's collaborate on a website that exceeds your expectations!",
+      description:
+        "I'm Anastasia Kravtsov, a tech expert with over 15 years of experience in software Quality Assurance and Engineering. Currently, I'm further enhancing my skills through a coding bootcamp. I have a deep passion for continuous learning and growth in the tech industry.",
       github: "https://github.com/akravt1274",
     },
-    
   ];
 
   return (
@@ -32,6 +31,13 @@ const About = () => {
             <div className="card mb-4 shadow-sm">
               {/* <img src={dev.image} alt={`${dev.name}'s profile`} className="card-img-top rounded-circle mx-auto mt-3" style={{ width: '150px', height: '150px' }} /> */}
               <div className="card-body">
+                <h5 className="card-title">
+                  {dev.name} {dev.pronouns}
+                </h5>
+                <p className="card-text">{dev.description}</p>
+                <div>
+                  <a href={dev.github}>{dev.name}'s Github</a>
+                </div>
                 <h5 className="card-title">{dev.name} {dev.pronouns}</h5>
                 <p className="card-text">{dev.description}</p>
                 <div><a href={dev.github}>{dev.name}'s Github</a></div>

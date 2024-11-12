@@ -12,11 +12,11 @@ const resolvers = {
       throw AuthenticationError;
     },
     users: async (parent, args) => {
-        return await User.find({}).select('-__v');
+      return await User.find({}).select('-__v');
     },
     trip: async (parent, {tripId}, context) => {
       const trip = await Trip.findById({ _id: tripId }).populate('user').select('-__v');
-      return { ...trip.toJSON(), canEdit: context?.user?._id == trip.user._id };
+      return { ...trip.toJSON(), createdAt: trip.createdAt, canEdit: context?.user?._id == trip.user._id };
     },
     trips: async (parent, args) => {
         return await Trip.find({}).select('-__v');
@@ -30,10 +30,8 @@ const resolvers = {
         return await Trip.find({ user: userId }).sort({ createdAt: -1 }).select('-__v');
       }
     },
-    tripsByCategory: async (parent, {category}) => {
-      console.log('category', category);
-      const trips = await Trip.find({category: category}).sort({createdAt: -1}).select('-__v');
-      console.log('trips by category', trips); 
+    tripsByCategory: async (parent, {category}) => {      
+      const trips = await Trip.find({category: category, isPublic: true}).sort({createdAt: -1}).select('-__v');
       return trips;
     },
     categoryList: async (parent, args) => {      

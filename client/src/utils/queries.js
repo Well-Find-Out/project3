@@ -1,16 +1,5 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_USER = gql`
-  {
-    user {
-      _id
-      firstName
-      lastName
-      userName
-    }
-  }
-`;
-
 export const QUERY_USERS = gql`
   {
     users {
@@ -49,17 +38,19 @@ query categoryList {
 `;
 
 export const QUERY_TRIPS_BY_CATEGORY = gql`
-query tripsByCategory($category: String) {
+query TripsByCategory($category: String!) {
   tripsByCategory(category: $category) {
     _id
     name
-    destination
-    isPublic
-    thumbnail
+    destination   
+    text 
+    isPublic  
+    thumbnail  
     category
-    createdAt
+    createdAt    
     user {
       _id
+      userName
     }
   }
 }

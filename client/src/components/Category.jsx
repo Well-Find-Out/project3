@@ -14,13 +14,12 @@ function Category() {
 
   return (
     <>
-      <h5 className="mt-5 mx-3">CATEGORIES</h5>
+      <h5 className="label-text mt-5 mx-3">CATEGORIES</h5>
       {!loading && !error && (
         <ul className="px-2 list-group w-50">
           {categories.map((category) => (
             <li className="list-group-item" key={category}>
-              {/* <a href={`/trips/${category.toLowerCase()}`}>{category}</a> */}
-              <a href={`/trips/${category}`}>{category}</a>
+              <a href={`/trips/category/${category}`}>{category}</a>
             </li>
           ))}
         </ul>

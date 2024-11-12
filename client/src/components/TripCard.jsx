@@ -1,6 +1,7 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function TripCard({ trip, userId }) {
+  console.log("TripCard", trip);
   const text = trip.text;
   const shortText = text.length > 150 ? text.substring(0, 150) + "..." : text;
 
@@ -17,7 +18,7 @@ function TripCard({ trip, userId }) {
             alt={trip.title}
           ></img>
           <div className="card-header d-flex justify-content-between">
-            <h5 className="card-title">
+            <h5 className="card-title label-text">
               <a href={`/trips/${trip._id}`}>{shortTitle}</a>
             </h5>
             <p>{trip.isPublic ? <FaEye /> : <FaEyeSlash />}</p>
@@ -30,7 +31,7 @@ function TripCard({ trip, userId }) {
           </div>
           <div className="card-footer text-body-secondary d-flex justify-content-between">
             <div className="d-flex">
-              <small>Created on: {trip.createdAt}</small>
+              <small className="label-text">Created on: {trip.createdAt}</small>
             </div>
           </div>
         </div>

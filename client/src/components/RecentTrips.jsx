@@ -4,7 +4,6 @@ import { QUERY_RECENT_TRIPS } from "../utils/queries.js";
 function RecentTrips() {
   const { loading, error, data } = useQuery(QUERY_RECENT_TRIPS);
   const trips = data?.recentTrips || [];
-  // console.log("Recent Trips", trips);
   if (loading) {
     return <h3>Loading...</h3>;
   }
@@ -17,7 +16,7 @@ function RecentTrips() {
 
   return (
     <>
-      <h5 className="mx-3">RECENT POSTS</h5>
+      <h5 className="label-text mx-3">RECENT POSTS</h5>
       {!loading && !error && (
         <ul className="list-group list-group-flush">
           {trips.map((trip) => (

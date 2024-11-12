@@ -11,7 +11,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import TripDetails from "./pages/TripDetails";
-import TripsByCategory from "./pages/TripsByCategory.jsx";
+import TripsByCategory from "./pages/TripsByCategory";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <TripDetails />,
       },
       {
-        path: "/trips/:category",
+        path: "/trips/category/:category",
         element: <TripsByCategory />,
       },
     ],
