@@ -16,6 +16,9 @@ function Login(props) {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+
+      const userId = mutationResponse.data.login.user._id;
+      Auth.user(userId);
     } catch (e) {
       console.log("error", e);
     }

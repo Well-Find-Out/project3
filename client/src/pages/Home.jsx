@@ -12,10 +12,10 @@ const Home = () => {
     const {data, loading, error} = useQuery(QUERY_TRIPS);
     const [selectedDestination, setSelectedDestination] = useState(null);
     
-    console.log('Data:', data);
+    // console.log('Data:', data);
     const trips = data?.trips || []
 
-    console.log('Here is the trip data:', trips);
+    // console.log('Here is the trip data:', trips);
 
     useEffect(() => {
       if (data ) {
