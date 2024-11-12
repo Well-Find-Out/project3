@@ -3,7 +3,7 @@ import { QUERY_CATEGORY } from "../utils/queries.js";
 
 function Category() {
   const { loading, error, data } = useQuery(QUERY_CATEGORY);
-  
+
   const categoryList = data?.categoryList || [];
   const array = [];
   categoryList.forEach((element) => {
@@ -19,7 +19,8 @@ function Category() {
         <ul className="px-2 list-group w-50">
           {categories.map((category) => (
             <li className="list-group-item" key={category}>
-              <a href={`/trips/${category.toLowerCase()}`}>{category}</a>
+              {/* <a href={`/trips/${category.toLowerCase()}`}>{category}</a> */}
+              <a href={`/trips/${category}`}>{category}</a>
             </li>
           ))}
         </ul>

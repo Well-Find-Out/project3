@@ -58,6 +58,7 @@ function Signup(props) {
                 id="firstName"
                 onChange={handleChange}
                 placeholder="First Name"
+                required
               />
             </div>
             <div className="mb-3">
@@ -71,6 +72,7 @@ function Signup(props) {
                 id="lastName"
                 onChange={handleChange}
                 placeholder="Last Name"
+                required
               />
             </div>
             <div className="mb-3">
@@ -84,6 +86,7 @@ function Signup(props) {
                 id="userName"
                 onChange={handleChange}
                 placeholder="Username"
+                required
               />
             </div>
             <div className="mb-3">
@@ -97,6 +100,7 @@ function Signup(props) {
                 id="email"
                 onChange={handleChange}
                 placeholder="name@example.com"
+                required
                 aria-describedby="emailHelp"
               />
             </div>
@@ -111,15 +115,9 @@ function Signup(props) {
                 id="password"
                 onChange={handleChange}
                 placeholder="*******"
+                required
               />
             </div>
-            {/* {error ? (
-              <div>
-                <p className="text-danger">
-                  Fields are required.
-                </p>
-              </div>
-            ) : null} */}
 
             <button type="submit" className="btn btn-primary mb-3">
               Submit

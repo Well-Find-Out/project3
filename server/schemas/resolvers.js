@@ -12,40 +12,36 @@ const resolvers = {
       throw AuthenticationError;
     },
     users: async (parent, args) => {
-        return User.find({}).select('-__v');
+        return await User.find({}).select('-__v');
     },
-    trip: async (parent, {tripId}) => {
-      return Trip.findById({_id: tripId});
+    trip: async (parent, {tripId}, context) => {
+      const trip = await Trip.findById({ _id: tripId }).populate('user').select('-__v');
+      return { ...trip.toJSON(), canEdit: context?.user?._id == trip.user._id };
     },
     trips: async (parent, args) => {
-        return Trip.find({}).select('-__v');
+        return await Trip.find({}).select('-__v');
     },
     recentTrips: async (parent, args) => {
-      return Trip.find({isPublic: true}).sort({createdAt: -1}).limit(5).select('-__v');
+      return await Trip.find({isPublic: true}).sort({createdAt: -1}).limit(5).select('-__v');
     },
     userTrips: async (parent, args, context) => {
       if (context.user) {
         const userId = context.user._id;
-        return Trip.find({ user: userId }).sort({ createdAt: -1 }).select('-__v');
+        return await Trip.find({ user: userId }).sort({ createdAt: -1 }).select('-__v');
       }
     },
-//     tripsByCategory: async (parent, { category }) => {
-//       const params = {};
-//       if (category) {
-//         params.category = category;
-//       }
-// // return await Product.find(params).populate('category');
-//       return await Trip.distinct('category', { category: params }).select('-__v');
-//     },
-    categoryList: async (parent, args) => {
-      // const res = await Trip.distinct('category');
-      // console.log(res);
+    tripsByCategory: async (parent, {category}) => {
+      console.log('category', category);
+      const trips = await Trip.find({category: category}).sort({createdAt: -1}).select('-__v');
+      console.log('trips by category', trips); 
+      return trips;
+    },
+    categoryList: async (parent, args) => {      
       return (await Trip.find().populate('category').select('-__v'));      
     },
     picturesTrip: async (parent, { tripId }, context) => {
       if (context.user) {
-        // return Trip.findById({ _id: tripId }).populate({ path: 'pictures', select: '-__v' });
-        return Trip.findById({ _id: tripId }).select('-__v');
+        return await Trip.findById({ _id: tripId }).select('-__v');
       }
     },
   },
@@ -76,8 +72,7 @@ const resolvers = {
           args,
           { new: true, })
           .select('-__v');
-      }
-      
+      }      
       throw AuthenticationError; 
     },
 
@@ -95,7 +90,6 @@ const resolvers = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-
       return { token, user };
     },
     updateUser: async (parent, args, context) => {
@@ -104,22 +98,17 @@ const resolvers = {
           new: true,
         });
       }
-
       throw AuthenticationError;
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw AuthenticationError;
       }
-
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw AuthenticationError;
       }
-
       const token = signToken(user);
       return { token, user };
     },

@@ -49,12 +49,15 @@ query categoryList {
 `;
 
 export const QUERY_TRIPS_BY_CATEGORY = gql`
-query TripsByCategory($category: String) {
+query tripsByCategory($category: String) {
   tripsByCategory(category: $category) {
     _id
-    thumbnail
-    category    
+    name
+    destination
     isPublic
+    thumbnail
+    category
+    createdAt
     user {
       _id
     }
@@ -73,8 +76,10 @@ export const QUERY_TRIP = gql`
     thumbnail
     category
     createdAt
+    canEdit
     user {
       _id
+      userName
     }
   }
 }

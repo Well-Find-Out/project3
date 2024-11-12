@@ -21,6 +21,20 @@ const typeDefs = `
     user: User
   }
 
+  type TripDetails {
+    _id: ID
+    name: String
+    destination: String
+    text: String
+    isPublic: Boolean
+    thumbnail: String
+    category: String
+    createdAt: String
+    pictures: [Picture]
+    user: User
+    canEdit: Boolean
+  }
+
   input TripData {
     name: String
     destination: String
@@ -50,12 +64,12 @@ const typeDefs = `
   type Query {
     user(userId: ID!): User
     users: [User]
-    trip(tripId: ID!): Trip
+    trip(tripId: ID!): TripDetails
     recentTrips: [Trip]    
     userTrips: [Trip]
     trips: [Trip]
     categoryList: [Trip] 
-    tripsByCategory(category: String): [Trip]
+    tripsByCategory(category: String!): [Trip]
     picturesTrip(tripId: ID!): Trip
   }
 

@@ -14,9 +14,7 @@ function TripDetails() {
     variables: { tripId },
   });
   const trip = data?.trip;
-
-  // const userID = data.trip.user._id;
-  // console.log(userID);
+  const canEdit = data?.trip?.canEdit;
 
   if (loading) {
     return <h3>Loading...</h3>;
@@ -54,13 +52,13 @@ function TripDetails() {
               <div>
                 <small>Created: {trip.createdAt}</small>
               </div>
-              
-              <div className="d-flex gap-3 justify-content-end">
-                <ImageUpload tripId={tripId} />
-                <EditTrip trip={trip} />
-                <DeleteTrip trip={trip} />
-              </div>
-             
+              {canEdit && (
+                <div className="d-flex gap-3 justify-content-end">
+                  <ImageUpload tripId={tripId} />
+                  <EditTrip trip={trip} />
+                  <DeleteTrip trip={trip} />
+                </div>
+              )}
             </div>
           </div>
         </div>

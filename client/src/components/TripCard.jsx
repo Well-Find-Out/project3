@@ -7,8 +7,6 @@ function TripCard({ trip, userId }) {
   const title = trip.name;
   const shortTitle = title.length > 40 ? title.substring(0, 40) + "..." : title;
 
-  console.log("userId", userId);
-
   return (
     <>
       <div className="col-md-6">
