@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_PICTURES } from "../utils/queries.js";
 import { Carousel } from "react-responsive-carousel";
 
-function ImageDisplay({ tripId }) {
+function ImageHome({ tripId }) {
   const { loading, error, data } = useQuery(QUERY_PICTURES, {
     variables: { tripId },
   });
@@ -20,7 +20,7 @@ function ImageDisplay({ tripId }) {
           infiniteLoop="true"
         >
           {pictures.map((item) => (
-            <div >
+            <div className="trip-image-container">
               <img src={`data:image/png;base64, ${item.imageString}`} />
             </div>
           ))}
@@ -29,4 +29,4 @@ function ImageDisplay({ tripId }) {
     </>
   );
 }
-export default ImageDisplay;
+export default ImageHome;
