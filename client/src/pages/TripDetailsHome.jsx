@@ -3,17 +3,15 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useQuery } from "@apollo/client";
 import { QUERY_TRIP } from "../utils/queries.js";
 
-import EditTrip from "../components/EditTrip.jsx";
-import DeleteTrip from "../components/DeleteTrip.jsx";
-import ImageUpload from "../components/ImageUpload.jsx";
-import ImageDisplay from "../components/ImageDisplay.jsx";
+// import ImageDisplay from "../components/ImageDisplay.jsx";
 
-function TripDetails() {
+function TripDetailsHome() {
   const { tripId } = useParams();
   const { loading, error, data } = useQuery(QUERY_TRIP, {
     variables: { tripId },
   });
   const trip = data?.trip;
+  // console.log("TripDetails", trip);
   const canEdit = data?.trip?.canEdit;
 
   if (loading) {
@@ -27,13 +25,13 @@ function TripDetails() {
     <section>
       {!loading && !error && (
         <div className="container">
-          <Link className="navbar-brand mb-3" to="/profile">
-            ← Go to Profile
+          <Link className="navbar-brand mb-3" to="/">
+            ← Go to Home
           </Link>
 
-          <div className="mb-3">
-            <ImageDisplay tripId={tripId} />
-          </div>
+          {/* <div className="mb-3">
+              <ImageDisplay tripId={tripId} />
+            </div> */}
 
           <div className="card-header d-flex justify-content-between">
             <h5 className="card-title label-text">{trip.name}</h5>
@@ -54,13 +52,6 @@ function TripDetails() {
                   Created on: {trip.createdAt}
                 </small>
               </div>
-              {canEdit && (
-                <div className="d-flex gap-3 justify-content-end">
-                  <ImageUpload tripId={tripId} />
-                  <EditTrip trip={trip} />
-                  <DeleteTrip trip={trip} />
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -69,4 +60,4 @@ function TripDetails() {
   );
 }
 
-export default TripDetails;
+export default TripDetailsHome;

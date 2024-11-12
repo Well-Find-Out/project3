@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-// import { UPLOAD_PICTURE } from "../utils/mutations";
 import { FaFileUpload } from "react-icons/fa";
 
 function ImageUpload({ tripId }) {

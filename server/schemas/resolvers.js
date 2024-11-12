@@ -14,9 +14,13 @@ const resolvers = {
     users: async (parent, args) => {
       return await User.find({}).select('-__v');
     },
-    trip: async (parent, {tripId}, context) => {
-      const trip = await Trip.findById({ _id: tripId }).populate('user').select('-__v');
+    trip: async (parent, { tripId }, context) => {
+      if (context.user) { 
+        const trip = await Trip.findById({ _id: tripId }).populate('user').select('-__v');
       return { ...trip.toJSON(), createdAt: trip.createdAt, canEdit: context?.user?._id == trip.user._id };
+      } else {
+        return await Trip.findById({ _id: tripId }).select('-__v');
+      }      
     },
     trips: async (parent, args) => {
         return await Trip.find({}).select('-__v');

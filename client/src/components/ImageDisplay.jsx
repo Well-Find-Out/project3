@@ -7,7 +7,7 @@ function ImageDisplay({ tripId }) {
     variables: { tripId },
   });
 
-  const pictures = data?.picturesTrip.pictures;
+  const pictures = data?.picturesTrip?.pictures;
   // console.log("pictures", pictures);
 
   return (
@@ -20,7 +20,7 @@ function ImageDisplay({ tripId }) {
           infiniteLoop="true"
         >
           {pictures.map((item) => (
-            <div >
+            <div>
               <img src={`data:image/png;base64, ${item.imageString}`} />
             </div>
           ))}

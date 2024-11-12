@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Profile from "./pages/Profile";
 import TripDetails from "./pages/TripDetails";
 import TripsByCategory from "./pages/TripsByCategory";
+import TripDetailsHome from "./pages/TripDetailsHome";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/:tripId",
+        element: <TripDetailsHome />,
       },
       {
         path: "/login",
@@ -43,6 +48,7 @@ const router = createBrowserRouter([
         path: "/trips/:tripId",
         element: <TripDetails />,
       },
+
       {
         path: "/trips/category/:category",
         element: <TripsByCategory />,

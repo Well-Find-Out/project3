@@ -1,7 +1,6 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function TripCard({ trip, userId }) {
-  console.log("TripCard", trip);
   const text = trip.text;
   const shortText = text.length > 150 ? text.substring(0, 150) + "..." : text;
 
