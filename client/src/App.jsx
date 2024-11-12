@@ -1,25 +1,24 @@
-import { Outlet } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from "@apollo/client";
 
-import Nav from './components/Nav';
-import { GlobalProvider } from './utils/GlobalState';
+import { setContext } from "@apollo/client/link/context";
+import { GlobalProvider } from "./utils/GlobalState";
+import MainLayout from "./components/MainLayout";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -34,8 +33,7 @@ function App() {
     <ApolloProvider client={client}>
       <div>
         <GlobalProvider>
-          <Nav />
-          <Outlet />
+          <MainLayout />
         </GlobalProvider>
       </div>
     </ApolloProvider>

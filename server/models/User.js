@@ -14,6 +14,11 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
+  userName: {
+    type: String,
+    required: true,
+    trim: true
+  },
   email: {
     type: String,
     required: true,
@@ -23,7 +28,13 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5
-  }
+  },
+  trips: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Trip'
+    }
+  ]
 });
 
 // set up pre-save middleware to create password

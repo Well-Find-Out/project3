@@ -30,9 +30,19 @@ class AuthService {
   login(idToken) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
-
     window.location.assign('/');
   }
+
+  // user(userId) {
+  //   // Saves user userId to localStorage
+  //   localStorage.setItem('user_id', userId);
+  //   window.location.assign('/');
+  // }
+
+  // getUserId() {
+  //   // Retrieves the user id from localStorage
+  //   return localStorage.getItem('user_id');
+  // }
 
   logout() {
     // Clear user token and profile data from localStorage
