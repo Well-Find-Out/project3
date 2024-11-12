@@ -21,7 +21,6 @@ function EditTrip({ trip }) {
   const [isPublic, setIsPublic] = useState(trip.isPublic);
   const [thumbnail, setThumbnail] = useState(trip.thumbnail);
 
-  console.log("category", category);
   const [updateTrip] = useMutation(UPDATE_TRIP, {
     variables: {
       tripId,
