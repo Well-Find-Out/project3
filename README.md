@@ -50,6 +50,7 @@ Built using the following technologies:
 ## Functionality:
 
 Users can sign up and log in to the World Travellers application. 
+The home page displays public trips posted by both the user and other community members.
 
 ![alt text](client/src/assets/image.png)
 
