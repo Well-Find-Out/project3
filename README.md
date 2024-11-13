@@ -1,25 +1,75 @@
-
-# World Travellers
-
+# Travel Blog
 
 ## Description
-This project uses the MERN (Mongo DB, Express, React, and Node.JS) stack to create a travel blog application.
+The travel blog project is designed to allow passionate travelers to create and share their travel experiences, stories, and tips. Users can craft detailed blog posts with titles, content, and images, making their adventures easily accessible and engaging for readers. The platform includes features such as editing and deletion of blog post, uploading images within their blog posts, categorizing their posts for easy navigation, and a responsive design for both desktop and mobile use.
 
-### Purpose:
+## User Story
 
-The purpose of this project is to allow users to sign up, log in, and create trips. After which they can share their memories, upload their photos, and decide whether they want to share their travels with fellow users, or keep their entries as a private travel diary.
+**Title**: User can create and share travel experiences.
 
-### Functionality:
+As a passionate traveler and blogger, I want to create and share my travel experiences, stories, and tips on a blog, so that I can inspire and inform others about different travel destinations.
 
-Users can signup and login to the World Travellers application. On the profile page, they can create new trips, access their the trip details pages, where they can edit their trips and upload images to their trips. On the home page, they can see public trips posted by both themselves and other users. 
+**Acceptance Criteria:**
+
+- **Blog Creation:** The user can create a new blog post with a title, content, and images.
+
+- **Image Upload:** The user can upload and manage images within their blog posts.
+
+- **Category:** The user can categorize their posts for easy navigation and searchability.
+
+- **Responsive Design:** The blog is accessible and visually appealing on both desktop and mobile devices.
 
 
-### Goals Accomplished:
+## Table of Contents
+* [Installation](#installation)
+* [Tech Used](#stack)
+* [Functionality](#functionality)
+* [Goals Accomplished](#goalsaccomplished)
+* [Review](#review)
+* [Contact](#contact)
 
-Users are able to share their trips with others by marking their trips public. They can also browse the other public trips of other users. Users are able to upload photos and store their photos in our database using base 64 and display them in a carosel on the trip page. 
+
+## Installation
+Clone this project repository to your computer.
+Use the terminal to run the commands:
+- navigate to the client folder, use the command "npm install" to install application dependecies, and the command "npm run dev" to start the client;
+- navigate to the server folder, use the command "npm install" to install application dependecies, and use the command "npm run watch" to start.
+    
+
+## Tech Used 
+Built using the following technologies:
+- React for the front end.
+- GraphQL with a Node.js and Express.js server.
+- MongoDB and the Mongoose ODM for the database.
+- Queries and mutations for retrieving, adding, updating, and deleting data.
+- JWT for authentication.
+- Google Map API, LocationIQ API
+- Render (with data) for deployment.
+- npm packages for images and icons: "react-icons"; "react-responsive-carousel"
+
+## Functionality:
+
+Users can sign up and log in to the World Travellers application. 
+
+![alt text](/project3/client/src/assets/image.png)
+
+On their profile page, users can create new blog posts, access their post details pages to edit trips, and upload images to their trips. The home page displays public trips posted by both the user and other community members.
+
+![alt text](/project3/client/src/assets/image-1.png)
+
+## Goals Accomplished:
+
+Users can share their travel experiences by marking trips as public, allowing them to browse and explore other users' public trips. They can also upload photos, which are stored using base64 encoding and displayed in a carousel on the trip page.
 
 
+## Review
+The URL of the functional, deployed application: https://travelblog-d8at.onrender.com/
 
-### Deployment:
+The URL of the GitHub repository: https://github.com/Well-Find-Out/project3
 
-[World Travellers](https://travelblog-d8at.onrender.com/)
+## Contact
+Contact me with any ideas or requests: 
+
+Cong - wangcong525@hotmail.com
+Katherine - katherineelainearenas@gmail.com
+Anastasia - akravt1274@gmail.com
