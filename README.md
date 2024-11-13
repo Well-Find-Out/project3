@@ -51,11 +51,11 @@ Built using the following technologies:
 
 Users can sign up and log in to the World Travellers application. 
 
-![alt text](/project3/client/src/assets/image.png)
+![alt text](client/src/assets/image.png)
 
 On their profile page, users can create new blog posts, access their post details pages to edit trips, and upload images to their trips. The home page displays public trips posted by both the user and other community members.
 
-![alt text](/project3/client/src/assets/image-1.png)
+![alt text](client/src/assets/image-1.png)
 
 ## Goals Accomplished:
 
