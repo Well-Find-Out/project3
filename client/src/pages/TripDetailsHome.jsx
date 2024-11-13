@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useQuery } from "@apollo/client";
 import { QUERY_TRIP } from "../utils/queries.js";
 
-// import ImageDisplay from "../components/ImageDisplay.jsx";
+import ImageDisplay from "../components/ImageDisplay.jsx";
 
 function TripDetailsHome() {
   const { tripId } = useParams();
@@ -29,9 +29,9 @@ function TripDetailsHome() {
             ← Go to Home
           </Link>
 
-          {/* <div className="mb-3">
+          <div className="mb-3">
               <ImageDisplay tripId={tripId} />
-            </div> */}
+            </div>
 
           <div className="card-header d-flex justify-content-between">
             <h5 className="card-title label-text">{trip.name}</h5>
