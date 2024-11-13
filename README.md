@@ -24,7 +24,6 @@ As a passionate traveler and blogger, I want to create and share my travel exper
 * [Installation](#installation)
 * [Tech Used](#stack)
 * [Functionality](#functionality)
-* [Goals Accomplished](#goalsaccomplished)
 * [Review](#review)
 * [Contact](#contact)
 
@@ -47,20 +46,20 @@ Built using the following technologies:
 - Render (with data) for deployment.
 - npm packages for images and icons: "react-icons"; "react-responsive-carousel"
 
-## Functionality:
 
-Users can sign up and log in to the World Travellers application. 
-The home page displays public trips posted by both the user and other community members.
+## Functionality
+
+### Home Page
+
+The home page displays public trips posted by both the user and other community members. Users can sign up and log in to the World Travellers application.
 
 ![alt text](client/src/assets/image.png)
 
-On their profile page, users can create new blog posts, access their post details pages to edit trips, and upload images to their trips. The home page displays public trips posted by both the user and other community members.
+### Profile page
+
+On the profile page, users can create new blog posts, access their post details pages to edit trips, and upload images to their trips. Users can share their travel experiences by marking trips as public, allowing them to browse and explore other users' public trips. They can also upload photos, which are stored using base64 encoding and displayed in a carousel on the trip page.
 
 ![alt text](client/src/assets/image-1.png)
-
-## Goals Accomplished:
-
-Users can share their travel experiences by marking trips as public, allowing them to browse and explore other users' public trips. They can also upload photos, which are stored using base64 encoding and displayed in a carousel on the trip page.
 
 
 ## Review
