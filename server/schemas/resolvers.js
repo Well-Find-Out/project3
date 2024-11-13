@@ -42,9 +42,9 @@ const resolvers = {
       return (await Trip.find().populate('category').select('-__v'));      
     },
     picturesTrip: async (parent, { tripId }, context) => {
-      if (context.user) {
+      // if (context.user) {
         return await Trip.findById({ _id: tripId }).select('-__v');
-      }
+      // }
     },
   },
   Mutation: {
