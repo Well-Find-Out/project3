@@ -69,8 +69,10 @@ The URL of the functional, deployed application: https://travelblog-d8at.onrende
 The URL of the GitHub repository: https://github.com/Well-Find-Out/project3
 
 ## Contact
-Contact me with any ideas or requests: 
+Contact us with any ideas or requests: 
 
 Cong - wangcong525@hotmail.com
+
 Katherine - katherineelainearenas@gmail.com
+
 Anastasia - akravt1274@gmail.com
